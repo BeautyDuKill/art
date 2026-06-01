@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="坠入层层叠叠 - Haoliday" data-en="Falling into Layers (and Layers) - Haoliday">坠入层层叠叠 - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 静帧图片容器：两张横着排列 */
+    .stills-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+
+    .stills-container img {
+      width: 48%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* 视频容器保持原有样式 */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 2rem auto;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 三章横向布局 */
+    .chapters-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;       /* 手机端自动换行 */
+      justify-content: space-between;
+      margin: 2rem 0;
+    }
+
+    .chapter {
+      flex: 1 1 30%;         /* 三列布局，每列最小宽度30% */
+      min-width: 250px;      /* 手机端不会太窄 */
+      background: rgba(255,255,255,0.05); /* 背景区分 */
+      padding: 1rem;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    .chapter h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: yellow;
+      text-align: center;
+    }
+
+    .chapter p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+    <h1 data-zh="坠入层层叠叠" data-en="Falling into Layers (and Layers)">坠入层层叠叠</h1>
+
+    <!-- 两张静帧图片 -->
+    <div class="stills-container">
+      <img src="层层叠叠 静帧2.jpg" alt="Falling into Layers still 2">
+      <img src="层层叠叠 静帧1.jpg" alt="Falling into Layers still 1">
+    </div>
+
+    <!-- 作品介绍文字 -->
+    <p
+      data-zh="作品类型：多屏影像装置<br>
+      作品简介：恐龙化石本就是一个多重时空叠加的谜团、层层遮蔽的黑箱，在全球文化和技术的纠缠下，还原化石的计划自然会成为自身视角的投影。面对板上钉钉的物质档案，我们是否还能将其视为没有结束的生命，从侏罗纪公园出逃，从单一的线性发展的未来想象出逃，在已死媒介的深层时间里进行考古。<br>
+      在垂直方向上设置的七条屏幕宛若彼此堆叠的地质层，最中间的屏幕作为人类世的地平线，试图划开坚硬的地质表层，展开关于地上和地下世界的影像表演。内容上将星宿龙头骨化石还原作为叙事起点，将影像创作分为“头骨拼接与板块漂移”、“头骨坍缩与时空压缩”、“头骨掩埋与信息存档” 三个章节，在考古式的影像进行中观看凝滞的地层档案开始流动，化石等废弃物重获新生，被掩埋的信息和物质被再次想象……"
+      
+      data-en="Work Type: Multi-screen video installation<br>
+      Description: A dinosaur fossil is itself a multilayered enigma — a black box of overlapping temporalities. Under the entanglement of global culture and technology, any attempt to restore it inevitably becomes a projection of one’s own perspective. Faced with this solidified material archive, can we still regard it as a life without closure — escaping from Jurassic Park, from the singular, linear imagination of the future, and conducting archaeology within the deep time of dead media?<br>
+      The seven vertically stacked screens resemble layers of geological strata, with the central one marking the horizon of the Anthropocene, attempting to cut through the hardened crust to stage a visual performance between the worlds above and below ground. Taking the reconstruction of a Sinraptor skull as the narrative starting point, the video unfolds in three chapters: “Cranial Assembly and Tectonic Drift,” “Cranial Collapse and Temporal Compression,” and “Cranial Burial and Information Archive.” Through this archaeological moving image process, stagnant strata begin to flow — fossils and discarded materials come alive, and the buried information and matter are reimagined anew.">
+      作品简介
+    </p>
+
+  <!-- 三章横向剧本 -->
+  <section class="script">
+  
+    <div class="chapters-container">
+  
+      <!-- 第一章 -->
+      <article class="chapter">
+        <h3 data-zh="头骨拼接与板块漂移" data-en="Cranial Assembly and Continental Drift">
+          第一章：头骨拼接与板块漂移
+        </h3>
+        <p 
+          data-zh="第一章从云南禄丰的星宿龙挖掘展开，从对头骨的拼接投射至大陆板块的重组与漂移，由此进入满布谜团的黑箱。<br><br>“楚雄禄丰，发现一个基于蜥脚型类恐龙的新属种——程氏星宿龙。面对三具埋藏在一起的装架标本，古生物学家说：‘星宿龙的发现丰富了禄丰组中基干蜥脚型类的多样性，也表明了蜥脚型类早期的演化过程要比先前的认知更加复杂。’出土的头骨化石像一个满布褶皱的纸团，等待着被揉开、还原和再次想象历史在板块的耦合中沉积，漆黑的孔隙诱人深入，不可见的洞穴里传出深层时间的召唤……”" 
+          data-en="Chapter 1 begins with the excavation of the Xingxiu Dinosaur in Lufeng, Yunnan, projecting from the assembly of its skull toward the reorganization and drift of continental plates—entering a black box filled with enigmas.<br><br>
+           “In Lufeng, Chuxiong, a new genus of sauropod dinosaur has been discovered — *Cheng’s Xingxiu Dinosaur*. Facing three mounted specimens buried together, paleontologists said: ‘The discovery of Xingxiu Dinosaur enriches the diversity of basal sauropods in the Lufeng Formation and shows that early sauropod evolution was more complex than previously thought.’  
+          The excavated skull fossil resembles a crumpled ball of paper—waiting to be unfolded, restored, and reimagined. History accumulates within the coupling of plates; dark cavities invite exploration. From unseen caves, the call of deep time resounds…”">
+        </p>
+      </article>
+  
+      <!-- 第二章 -->
+      <article class="chapter">
+        <h3 data-zh="头骨坍缩与时空压缩" data-en="Cranial Collapse and Time–Space Compression">
+          第二章：头骨坍缩与时空压缩
+        </h3>
+        <p 
+          data-zh="第二章将视角切换至云南当地的恐龙皮套、化石工厂，看工人们依靠什么来还原恐龙形象，又如何在全球文化产业链条中运转。承接第一章，挖掘出的星宿龙头骨化石由于地质作用头出现易位。本章将其同构于全球技术配置下的时空关系的重组，无论来自于哪里我们凝望同一只恐龙、生产同一只恐龙，被席卷进同一个技术进步的美梦。<br><br>“远离云南禄丰的侏罗纪公园有着肥沃的技术土壤，在那里恐龙边复活边进化，更多的牙齿、更细腻的皮肤，更肌肉发达血脉喷张。技术是人类世的地平线，隧道、地下交通、下水道系统，地表之下黑暗不可见。高速运转的地铁里，发光的站点名犹如一个个可以生成图像的神秘咒语，在停靠间隙召唤出对于地上世界的想象。受力于旷日持久的地质作用，星宿龙头骨发生错位，上颌骨连带齿骨被向内挤压。相离的两端正在靠近，多重时间因此压缩。电影技术、还原技术、生产技术，物理距离的定义发生改变，全球网络彼此纠缠。海内存知己，天涯若比邻。无论来自哪里，至少我们可以眺望同一只恐龙，它目光如炬，脚步坚定，迈向未来。”"
+          data-en="Chapter 2 shifts the perspective to local dinosaur costume makers and fossil factories in Yunnan — observing how workers reconstruct the dinosaur’s image and how these practices circulate within the global cultural industry chain.  
+          Continuing from Chapter 1, the Xingxiu Dinosaur skull unearthed from Lufeng became displaced under geological forces. This chapter parallels that dislocation with the reorganization of relations under global technological configurations, illustrating a process of time–space compression.<br><br>
+          “Far from Lufeng, Yunnan, Jurassic Park thrives upon fertile technological soil — where dinosaurs are resurrected and evolved: with sharper teeth, finer skin, stronger and more vigorous muscles.  
+          Technology is the horizon of the Anthropocene — tunnels, underground transport, sewer systems — beneath the surface lies an unseen darkness.  
+          In the rapidly moving subway, the glowing station names are like mysterious spells that conjure images of the world above.  
+          Under immense geological pressure, the Xingxiu Dinosaur’s skull becomes distorted; its maxilla and dentary are compressed inward.  
+          The once-distant ends move closer, compressing multiple timescales. Film technology, restoration technology, and production technology redefine physical distance, entangling global networks.  
+          Though oceans apart, we gaze upon the same dinosaur — its eyes bright, its steps firm — striding toward the future.”">
+        </p>
+      </article>
+  
+      <!-- 第三章 -->
+      <article class="chapter">
+        <h3 data-zh="头骨掩埋与信息存档" data-en="Cranial Burial and Information Archiving">
+          第三章：头骨掩埋与信息存档
+        </h3>
+        <p 
+          data-zh="第三章讲述了头骨最终被还原出来，在被再次掩埋前，地层被纵向掀开，这些废弃物开始复活，iPhone成为流动的地质层，头骨成为建模软件里没有体积的地表，最终被归档为一条窄窄的地平线。<br><br>“深层时间以确凿的形状被盖棺定论，固定成历史，压缩成化石。罗伯特·史密斯森说过：‘像恐龙这样的废物必须回归灰尘或铁锈。’被废弃、被掩埋，被载入巨大的地质存储。化石提醒我们，垂死的事物并未消失。1.3KG化石燃料可以制造一枚微芯片，而在世界工厂深圳，废弃的廉价电子产品回归地下，融入地质记忆。旅行者号停航，黄金唱片流浪，僵尸媒介层向外扩张。苍穹之下，没有人知道光滑洁白的云如何触摸，飘向何方，又是否在地图上？并不光洁的灰尘弥散在你我之间，无形、无界、无处不在，无孔不入，不被注意地连接彼此。思考是一种计算，DNA是软件，而进化是一种算法过程。迭代升级进化，地层是否也有不断扩大的数字代号，取代侵蚀、沉积、固结和隆起，线性地向上堆积生长。三维软件里，星宿龙头骨终于被还原出来，并以bit态被掩埋，占用了33Mb的硬盘空间。”"
+          data-en="Chapter 3 tells of the skull’s final restoration. Before it is buried again, the strata are vertically lifted — and the discarded materials begin to stir once more. iPhones become mobile geological layers; the skull becomes a volumeless surface within 3D modeling software, finally archived as a narrow horizon.<br><br>
+          “Deep time is sealed into form, fixed as history, compressed into fossils.  
+          Robert Smithson once said: ‘Waste like dinosaurs must return to dust or rust.’  
+          Abandoned, buried, recorded within vast geological storage — fossils remind us that dying things do not disappear.  
+          1.3 kilograms of fossil fuel can produce a microchip; in Shenzhen, the world’s factory, discarded electronics return underground, absorbed into geological memory.  
+          Voyager ceases, the Golden Record drifts, zombie media layers expand outward.  
+          Beneath the sky, no one knows how smooth white clouds are touched, where they drift, or whether they appear on any map.  
+          Imperfect dust spreads between us — invisible, boundless, omnipresent — quietly connecting everything.  
+          Thought is a computation; DNA is software; evolution is an algorithmic process.  
+          Through iteration and upgrade, do the strata themselves now accumulate digital codes, replacing erosion, sedimentation, consolidation, and uplift — stacking linearly upward?  
+          In 3D software, the Xingxiu Dinosaur skull is finally restored and buried as bits, occupying 33 MB of hard drive space.”">
+        </p>
+      </article>
+  
+    </div>
+  </section>
+
+
+    <!-- 视频 -->
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/tLBP2HHQ0Rk?si=ejSCIZP7lMFidCxl" allowfullscreen></iframe>
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+</body>
+</html>

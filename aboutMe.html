@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="关于我 - Haoliday" data-en="About Me - Haoliday">关于我 - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* hook 图片样式 */
+    #hook {
+      position: fixed;
+      top: -30px;               /* 上移隐藏截断横边 */
+      left: 50%;
+      width: 160px;             /* 默认尺寸更大 */
+      transform-origin: top center; 
+      z-index: -1;              /* 放到文字后面 */
+      pointer-events: none;
+      transition: width 0.3s, top 0.3s;
+    }
+
+    /* 大屏幕放大图片 */
+    @media (min-width: 1024px) {
+      #hook {
+        width: 220px;           /* 电脑端更大 */
+        top: -40px;             /* 电脑端稍微上移更多 */
+      }
+    }
+
+    /* 中等屏幕略微调整 */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      #hook {
+        width: 190px;
+        top: -35px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <!-- hook 图片 -->
+  <img id="hook" src="hook.png" alt="hook image" />
+
+  <main class="content">
+    <h1 data-zh="你好，我是严正皓" data-en="Hello, I'm Yan Zhenghao">你好</h1>
+    <p data-zh="我目前生活于汉堡，创作涵盖动态影像、装置与 CGI 世界构建。<br>
+    我的作品通过思辨性、片段化的叙事，从身体感受、幽默与荒诞经验出发，重新观察日常中的基础设施与技术系统。"
+    
+       data-en="I'm an artist based in Hamburg now, working across moving image, installation, and CGI-based world-building.<br>
+        My works unfold through speculative and fragmented narratives, exploring everyday infrastructures and technological systems through bodily experience, humor, and absurdity."> </p>
+     
+     
+     
+    <section class="cv-section">
+
+      <h2 data-zh="教育" data-en="Education">教育</h2>
+    
+      <ul>
+        <li>
+          <span data-zh="2020—2024 本科｜中国美术学院 · 创新设计学院 · "
+                data-en="2020–2024 BE, China Academy of Art · School of Design & Innovation· ">
+          </span>
+      
+          <a href="http://caa-riss.com/" target="_blank" rel="noopener noreferrer"
+             data-zh="社会与策略研究所"
+             data-en="Research Institute of Society & Strategy">
+            社会与策略研究所
+          </a>
+      
+         
+        </li>
+      
+        <li>
+          <span data-zh="2024—至今 硕士｜中国美术学院 · 跨媒体艺术学院 · "
+                data-en="2024–Present MA, China Academy of Art · School of Intermedia Art · ">
+          </span>
+      
+          <a href="https://caa-ins.org/" target="_blank" rel="noopener noreferrer"
+             data-zh="网络社会研究所"
+             data-en="Institute of Network Society">
+            网络社会研究所
+          </a>
+      
+        
+        </li>
+      
+        <li>
+          <span data-zh="2025.10—2026.3 交换(ASA计划)｜"
+                data-en="Oct 2025 – Mar 2026 , Exchange(ASA Program) , ">
+          </span>
+      
+          <a href="https://www.hfbk-hamburg.de/en/" target="_blank" rel="noopener noreferrer"
+             data-zh="汉堡美术学院"
+             data-en="HFBK Hamburg">
+            汉堡美术学院
+          </a>
+        </li>
+      </ul>
+
+    
+    
+      <h2 data-zh="部分参展" data-en="Selected exhibitions">参展</h2>
+    
+      <ul>
+        <li data-zh="2026.7 Werkleitz 媒体艺术节 2026，德国哈雷"
+            data-en="Jul 2026, Werkleitz Festival 2026, Halle (Saale), Germany"></li>
+            
+        <li data-zh="2026.5 第61届威尼斯双年展中国馆，意大利威尼斯"
+            data-en="Apr 2026, China Pavilion, 61st La Biennale di Venezia, Venice, Italy"></li>
+            
+        <li data-zh="2026.4 第55届Sehsüchte国际学生电影节，德国波茨坦"
+            data-en="Apr 2026, 55th Sehsüchte International Student Film Festival, Potsdam, Germany"></li>
+                   
+        <li data-zh="2025.12 艺术学校联盟开放工作室，德国汉堡"
+            data-en="Dec 2025, Art School Alliance Open Studio, Hamburg, Germany"></li>
+            
+        <li data-zh="2025.7 第24届国际电子语言艺术节, 巴西圣保罗"
+            data-en="Jul 2025, 24th International Electronic Language Festival, São Paulo, Brazil"></li>     
+            
+        <li data-zh="2025.5 蜂巢AI理想国，中国北京"
+            data-en="May 2025, Hive AI Utopia, Beijing, China"></li>
+            
+        <li data-zh="2024.10 新未来——人工智能时代的诗与思，中国深圳"
+            data-en="Oct 2024, New Futures: Poetry & Thought in the AI Era, Shenzhen, China"></li>
+            
+        <li data-zh="2023.10 在科幻·龙游，中国衢州"
+            data-en="Oct 2023, Sci-Fi · Longyou, Quzhou, China"></li>
+            
+        <li data-zh="2023.10 向达·芬奇提案——第七届跨媒体艺术节，中国上海"
+            data-en="Oct 2023, Proposal to Da Vinci – 7th Intermedia Art Festival, Shanghai, China"></li>
+            
+        <li data-zh="2023.7 第二届浙江青年科学家节「科学之美」，中国杭州"
+            data-en="Jul 2023, 2nd Zhejiang Young Scientists Festival – Science & Beauty, Hangzhou, China"></li>      
+      </ul>
+  
+    
+      <h2 data-zh="部分获奖" data-en="Selected awards">获奖</h2>
+    
+      <ul>
+        <li data-zh="2024.3 第二季雷电所青年科技艺术扶持计划「史」奖"
+            data-en="Mar 2024, The 2023 Raiden INST Emerging Sci-tech Artists Awards"></li>
+    
+        <li data-zh="2024.4 第十四届北京国际电影节AIGC短片单元最佳美术设计"
+            data-en="Apr 2024, 14th Beijing International Film Festival AIGC Short Film Unit - Best Art Design Award"></li>
+    
+        <li data-zh="2024.6 2024届林风眠毕业创作铜奖"
+            data-en="Jun 2024, Lin Fengmian Graduation Award – Bronze"></li>
+      </ul>
+
+    
+      <h2 data-zh="部分项目" data-en="Selected projects">曾参与项目</h2>
+    
+      <ul>
+        <li data-zh="三维、AIGC动画｜纪录片《时间·生命｜深时的巨石——寻访星宿龙》"
+            data-en="3D & AIGC Animation – Documentary: Time · Life：Megalith in the Deep Time - Seeking Xingxiulong Cheng"></li>
+            
+        <li data-zh="AIGC动画｜2023成都大运会动画《青春绽放》"
+            data-en="AIGC Animation – Summer World University Games 2023: Blossom of Youth"></li>
+            
+          <li data-zh="AIGC动画｜中国美术学院2024年毕业季主视觉动画 – 《世界树》"
+            data-en="AIGC Animation – CAA 2024 Graduation Season Visual animation : World Tree"></li>
+            
+        <li data-zh="三维动画｜纪录片《文化与技术三部曲｜个人计算机与反文化篇》"
+            data-en="3D Animation – Documentary: Culture & Technology Trilogy: Personal Computer & Counterculture"></li>
+            
+        <li data-zh="三维动画｜纪录片《深圳：世界工厂》"
+            data-en="3D Animation – Documentary: Shenzhen: The World Factory"></li>
+            
+        <li data-zh="活动策划｜第九届网络社会年会 | 复音的全球南方：技术交流的空间"
+            data-en="Program Coordination – The 9th Annual Conference of Network Society | Polyphonic Global South:The Spaces of Technological Communication"></li>
+            
+        <li data-zh="导演、动画｜中国美术学院2025年毕业季开幕影像: 《变形记》"
+            data-en="Director & Animation – CAA 2025 Graduation Season Opening Film: Metamorphosis"></li>
+      </ul>
+    
+    </section>
+
+
+
+    <h2 data-zh="请找到我" data-en="Find Me">在这儿找到我</h2>
+
+    <p><span data-zh="邮箱：" data-en="Email:">邮箱：</span>BeatyDuKill@gmail.com</p>
+
+    <a href="https://www.instagram.com/beautydukill/" data-zh="Instagram" data-en="Instagram">Instagram</a>
+    <br>
+    <a href="https://www.xiaohongshu.com/user/profile/5f77ee0e0000000001004c8d" 
+       data-zh="小红书" 
+       data-en="Xiaohongshu">小红书 / Xiaohongshu</a>
+  </main>
+
+  <script src="common.js"></script>
+
+  <script>
+    // hook 图片左右旋转摆动
+    const hook = document.getElementById('hook');
+    let angle = 0;
+    const maxAngle = 15; 
+    const speed = 0.02 + Math.random() * 0.01; 
+
+    function animateHook() {
+      const rotation = Math.sin(angle) * maxAngle;
+      hook.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
+      angle += speed;
+      requestAnimationFrame(animateHook);
+    }
+
+    animateHook();
+  </script>
+ 
+  <style>
+    /* ===== About page color unification (use site colors) ===== */
+  
+    /* 主标题 Hello */
+    main.content h1 {
+      color: yellow;
+      font-size: 2.1rem;
+    }
+  
+    /* Section 标题：Education / Exhibitions / Awards */
+    main.content h2 {
+      color: yellow;
+      font-size: 1.3rem;   /* 比 h1 小 */
+      margin-top: 2.2rem;
+    }
+  
+    /* 正文、列表、链接统一用站内紫色 */
+    main.content p,
+    .cv-section li,
+    .cv-section ul,
+    main.content a,
+    main.content span {
+      color: purple;
+    }
+  
+    /* 行距统一 */
+    main.content p,
+    .cv-section li {
+      line-height: 1.7;
+    }
+  
+    /* 列表紧凑一点 */
+    .cv-section ul {
+      padding-left: 1.2rem;
+    }
+  
+    .cv-section li {
+      margin-bottom: 6px;
+    }
+    
+    /* 正文可读性增强：淡底 + 发光 */
+    main.content p,
+    .cv-section ul,
+    main.content a {
+  
+    
+      text-shadow:
+        1px 1px 0 rgba(0,0,0,0.95),
+        -1px 1px 0 rgba(0,0,0,0.95),
+        1px -1px 0 rgba(0,0,0,0.95),
+        -1px -1px 0 rgba(0,0,0,0.95),
+        0 0 12px rgba(128,0,128,0.55);
+    }
+    
+    /* 标题：黑描边 + 黄 glow */
+    main.content h1,
+    main.content h2 {
+      text-shadow:
+        1px 1px 0 #000,
+        -1px 1px 0 #000,
+        1px -1px 0 #000,
+        -1px -1px 0 #000,
+        0 0 18px rgba(255,255,0,0.35);
+    }
+
+
+
+  </style>
+
+
+
+
+</body>
+</html>
+
+

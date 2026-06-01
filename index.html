@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+   html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden !important;
+      background: black;
+    }
+    
+     #intro {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #shellPlanet {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 300px;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    #welcome-animation {
+      position: absolute;
+      top: 60%; /* 原来是50%，越大越往下 */
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 11;
+      pointer-events: none;
+    }
+    
+    #language-select {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      gap: 40px;
+      z-index: 12;
+    }
+    
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .lang-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .planet-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+    }
+
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      animation: rotateOrbit linear infinite;
+    }
+
+    /* 悬停效果 - 暂停公转，只进行自转 */
+    .orbit.hover-paused {
+      animation-play-state: paused ; /* 暂停轨道动画 */
+    }
+    
+    
+    .planet {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: floatRandom 5s linear infinite;
+      filter: drop-shadow(0 0 10px #fff);
+      pointer-events: auto;
+      z-index: 2;
+      transition: transform 0.5s ease, filter 0.5s ease, opacity 0.6s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+    }
+ 
+     .planet img {
+      max-width: 150px;
+      max-height: 150px;
+      width: auto;
+      height: auto;
+      cursor: pointer;
+      pointer-events: auto;
+      object-fit: contain;
+    }
+
+
+     .planet.visible {
+      opacity: 1;
+    }
+
+
+
+    /* 悬停在行星时，发光并放大子 <img> */
+    .planet.hover-paused {
+      z-index: 10; /* 提升层级，保证在最上层 */
+      filter: drop-shadow(0 0 20px #ffcc00);
+    }
+    
+    /* 当行星带 .hover-paused 类时，让其内部的 <img> 放大 */
+    .planet.hover-paused img {
+      transform: scale(2);
+    }
+
+
+
+    @keyframes rotateOrbit {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+
+    @keyframes floatRandom {
+      0% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+      50% { transform: translateX(-50%) translateY(-15px) rotate(180deg); }
+      100% { transform: translateX(-50%) translateY(0) rotate(360deg); }
+    }
+
+
+  
+  </style>
+  
+
+</head>
+
+
+<div id="intro">
+  <div id="shellPlanet">
+    <img src="shellWithMe.png" style="width: 300px;" />
+  </div>
+
+  <!-- 动画按钮仅作装饰，不触发事件 -->
+  <div id="welcome-animation">
+    <img src="backToHaoliday.gif" alt="Welcome" style="width: 200px;">
+  </div>
+
+  <!-- 语言选择按钮 -->
+  <div id="language-select">
+    <button id="btn-cn" class="lang-btn">
+      <img src="button_cn.png" alt="中文入口" style="width: 160px;">
+    </button>
+    <button id="btn-en" class="lang-btn">
+      <img src="button_en.png" alt="English Entrance" style="width: 160px;">
+    </button>
+  </div>
+</div>
+  
+  
+
+
+  <div id="sidebar-placeholder"></div>
+
+  <div class="planet-container">
+  
+  
+    <div class="orbit" style="width: 400px; height: 700px; animation-duration: 10s;">
+      <div class="planet">
+        <a href="aboutMe.html"><img src="shellWithMe.png" alt="me" /></a>
+      </div>
+    </div>
+
+   
+
+    <div class="orbit" style="width: 200px; height: 800px; animation-duration: 15s;">
+      <div class="planet">
+        <a href="page1.html"><img src="椅子气球.png" alt="作品一" /></a>
+      </div>
+    </div>
+
+   
+
+    
+    <div class="orbit" style="width: 1000px; height: 500px; animation-duration: 35s;">
+      <div class="planet">
+        <a href="page3.html"><img src="坠入层层叠叠.png" alt="作品三" /></a>
+      </div>
+    </div>
+
+
+
+    <div class="orbit" style="width: 100px; height: 900px; animation-duration: 13s;">
+      <div class="planet">
+        <a href="page5.html"><img src="EMO机.png" alt="作品五" /></a>
+      </div>
+    </div>
+
+  
+    <div class="orbit" style="width: 200px; height: 500px; animation-duration: 13s;">
+      <div class="planet">
+        <a href="page6.html"><img src="大运会.png" alt="作品六" /></a>
+      </div>
+    </div>
+
+    <div class="orbit" style="width: 1400px; height: 300px; animation-duration: 12s;">
+      <div class="planet">
+        <a href="page2.html"><img src="新文艺复兴.png" alt="作品二" /></a>
+      </div>
+    </div>
+    
+    <div class="orbit" style="width: 600px; height: 500px; animation-duration: 25s;">
+      <div class="planet">
+        <a href="page4.html"><img src="PDF2Page.png" alt="作品四" /></a>
+      </div>
+    </div>
+    
+  </div>
+  
+  <script>
+    function addPlanetHoverEffect() {
+      const planets = document.querySelectorAll('.planet');
+      
+      planets.forEach(planet => {
+        // 鼠标移到行星时，给父级轨道添加 “hover-paused” 类
+        planet.addEventListener('mouseenter', function() {
+          const orbit = this.closest('.orbit');
+          if (orbit) {
+            orbit.classList.add('hover-paused');
+            this.classList.add('hover-paused');
+          }
+        });
+  
+        // 鼠标移出行星时，移除 “hover-paused” 类，让轨道和行星恢复
+        planet.addEventListener('mouseleave', function() {
+          const orbit = this.closest('.orbit');
+          if (orbit) {
+            orbit.classList.remove('hover-paused');
+            this.classList.remove('hover-paused');
+          }
+        });
+      });
+    }
+  
+    // —— 定义完函数后立即调用，确保所有 .planet 元素都已加载完毕 —— 
+    addPlanetHoverEffect();
+  </script>
+  
+  <script>
+  // —— 中文入口按钮 ——
+  document.getElementById('btn-cn').addEventListener('click', () => {
+    localStorage.setItem('language', 'zh');
+    enterMainPage();
+  });
+  
+  // —— 英文入口按钮 ——
+  document.getElementById('btn-en').addEventListener('click', () => {
+    localStorage.setItem('language', 'en');
+    enterMainPage();
+  });
+  
+  function enterMainPage() {
+    document.getElementById('intro').style.display = 'none';
+    showPlanetsSequentially();
+    showSidebarWithDelay();
+    sessionStorage.setItem('seenIntro', '1');
+  }
+  
+  // —— 如果之前已经看过 intro，则直接进入主页面 ——
+  if (sessionStorage.getItem('seenIntro')) {
+    document.getElementById('intro').style.display = 'none';
+    document.querySelectorAll('.planet').forEach(p => p.classList.add('visible'));
+    
+    // 等待sidebar加载完成
+    setTimeout(() => {
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar) sidebar.style.display = 'flex';
+    }, 100);
+  }
+  </script>
+
+  <script>
+      function showPlanetsSequentially() {
+        const planets = document.querySelectorAll('.planet');
+        planets.forEach((planet, index) => {
+          setTimeout(() => {
+            planet.classList.add('visible');
+          }, index * 600); // 600ms 间隔依次显示
+        });
+      }
+      
+      function showSidebarWithDelay() {
+        setTimeout(() => {
+          const sidebar = document.getElementById('sidebar');
+          sidebar.style.display = 'flex';
+          setTimeout(() => sidebar.classList.add('show'), 50); // 触发 opacity 过渡
+        }, document.querySelectorAll('.planet').length * 600 + 300); // 在所有星星之后出现
+      }
+
+  </script>
+    
+  <script src="common.js"></script>   
+
+
+</body>
+</html>
