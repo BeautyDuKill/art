@@ -1,101 +1,93 @@
-
-
 // ---------------------------
-// common.js（支持侧边栏语言切换）
+// common.js（支持侧边栏加载、语言切换、当前页面高亮）
 // ---------------------------
 
-// 提前在 HTML 上标记语言，避免闪烁
-const savedLang = localStorage.getItem('language') || 'zh';
+// 读取当前语言；默认中文
+function getCurrentLanguage() {
+  return localStorage.getItem('language') || 'zh';
+}
+
+// 页面刚开始就把语言标记写到 <html> 上，减少闪烁
+const savedLang = getCurrentLanguage();
 document.documentElement.setAttribute('data-lang', savedLang);
+document.documentElement.lang = savedLang === 'zh' ? 'zh-CN' : 'en';
 
+// 应用语言到页面中所有带 data-zh / data-en 的元素
+function applyLanguage(lang = getCurrentLanguage()) {
+  localStorage.setItem('language', lang);
+  document.documentElement.setAttribute('data-lang', lang);
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
-// 初始化侧边栏语言
-function initSidebarLanguage() {
-  const lang = localStorage.getItem('language') || 'zh';
-  const sidebarElements = document.querySelectorAll('#sidebar [data-zh]');
-  
-  sidebarElements.forEach(el => {
-    const zh = el.dataset.zh;
-    const en = el.dataset.en;
-    if (zh && en) {
-      el.textContent = lang === 'zh' ? zh : en;
+  document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+    const value = lang === 'zh' ? el.dataset.zh : el.dataset.en;
+    if (value == null) return;
+
+    // <title> 比较特殊，直接改 document.title
+    if (el.tagName === 'TITLE') {
+      document.title = value;
+      return;
     }
-  });
 
-  // 显示/隐藏 sidebar 底部单一语言按钮（如果你用 updateSidebarLangButton 控制的话，可不用此处处理）
-  // updateSidebarLangButton(); // 如果需要，可以在这里调用（可选）
-
-  // 初始化侧边栏语言完成，解除隐藏（消除闪烁）
-  document.body.classList.add('sidebar-ready');
-}
-
-
-// 初始化页面内容语言
-function initPageContentLanguage() {
-  const lang = localStorage.getItem('language') || 'zh';
-  const contentElements = document.querySelectorAll('main [data-zh], [data-zh]:not(#sidebar *)');
-  
-  contentElements.forEach(el => {
-    const zh = el.dataset.zh;
-    const en = el.dataset.en;
-    if (zh && en) {
-      if (zh.includes('<br>') || en.includes('<br>')) {
-        el.innerHTML = lang === 'zh' ? zh : en;
-      } else {
-        el.textContent = lang === 'zh' ? zh : en;
-      }
+    // 如果文本里有 <br>，保留换行
+    if (
+      value.includes('<br>') ||
+      value.includes('<br/>') ||
+      value.includes('<br />')
+    ) {
+      el.innerHTML = value;
+    } else {
+      el.textContent = value;
     }
   });
 }
 
-// 初始化完整页面语言
+// 暴露给 index.html 里的入口按钮使用
+window.applyLanguage = applyLanguage;
+
 function initFullPageLanguage() {
-  initSidebarLanguage();
-  initPageContentLanguage();
+  applyLanguage(getCurrentLanguage());
 }
 
-// 高亮当前页面
+window.initFullPageLanguage = initFullPageLanguage;
+
+// 高亮当前页面对应的 sidebar 链接
 function highlightCurrentPage() {
   const links = document.querySelectorAll('nav a');
-  let currentPage = window.location.pathname.split('/').pop().split('?')[0].split('#')[0];
-  
-  // 处理各种情况
+  let currentPage = window.location.pathname
+    .split('/')
+    .pop()
+    .split('?')[0]
+    .split('#')[0];
+
   if (!currentPage || currentPage === '' || currentPage === '/') {
     currentPage = 'index.html';
   }
-  
-  // 确保有 .html 扩展名
+
   if (currentPage && !currentPage.includes('.')) {
     currentPage += '.html';
   }
-  
-  console.log('当前页面:', currentPage);
-  
+
   links.forEach(link => {
     const href = link.getAttribute('href');
-    // 移除可能存在的 active 类
     link.classList.remove('active');
-    
-    // 检查是否匹配当前页面
+
     if (href === currentPage) {
       link.classList.add('active');
-      console.log('高亮链接:', href);
     }
   });
 }
 
-// ---------------------------
-// 侧边栏语言按钮（只显示一个）
-// ---------------------------
+// 控制 sidebar 里的语言按钮：只显示“另一种语言”的按钮
 function updateSidebarLangButton() {
-  const lang = localStorage.getItem('language') || 'zh';
+  const lang = getCurrentLanguage();
   const langSwitch = document.querySelector('#lang-switch');
   if (!langSwitch) return;
 
   const btnCN = langSwitch.querySelector('[data-lang="zh"]');
   const btnEN = langSwitch.querySelector('[data-lang="en"]');
 
-  // 当前语言按钮隐藏，另一语言按钮显示
+  if (!btnCN || !btnEN) return;
+
   if (lang === 'zh') {
     btnCN.style.display = 'none';
     btnEN.style.display = 'block';
@@ -104,39 +96,59 @@ function updateSidebarLangButton() {
     btnEN.style.display = 'none';
   }
 
-  // 点击切换语言
   [btnCN, btnEN].forEach(btn => {
     btn.onclick = () => {
       const newLang = btn.dataset.lang;
-      localStorage.setItem('language', newLang);
-      initFullPageLanguage();
+      applyLanguage(newLang);
       updateSidebarLangButton();
     };
   });
 }
 
-// ---------------------------
-// 页面加载完成
-// ---------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  // 加载 sidebar
-  fetch('sidebar.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('sidebar-placeholder').innerHTML = html;
+// sidebar 加载完成后统一初始化
+function finishSidebarSetup() {
+  initFullPageLanguage();
+  highlightCurrentPage();
+  updateSidebarLangButton();
 
-      setTimeout(() => {
-        initFullPageLanguage();
-        highlightCurrentPage();
-        updateSidebarLangButton();
-      }, 100);
+  // 如果 style.css 里用 body.sidebar-ready 控制 sidebar 显示，这句很重要
+  document.body.classList.add('sidebar-ready');
+
+  // 通知 index.html：sidebar 已经加载完成
+  document.dispatchEvent(new Event('sidebarLoaded'));
+}
+
+// 加载 sidebar.html
+function loadSidebar() {
+  const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+
+  // 有些页面如果没有 sidebar-placeholder，也正常应用语言
+  if (!sidebarPlaceholder) {
+    initFullPageLanguage();
+    document.body.classList.add('sidebar-ready');
+    return;
+  }
+
+  fetch('sidebar.html')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`sidebar.html 加载失败：${response.status}`);
+      }
+      return response.text();
+    })
+    .then(html => {
+      sidebarPlaceholder.innerHTML = html;
+      finishSidebarSetup();
     })
     .catch(err => {
       console.error('加载侧边栏失败:', err);
-      initPageContentLanguage();
+      initFullPageLanguage();
+      document.body.classList.add('sidebar-ready');
     });
+}
 
-  // sparkle 动画
+// 创建 sparkle 背景动画
+function createSparkles() {
   for (let i = 0; i < 100; i++) {
     const sparkle = document.createElement('div');
     sparkle.className = 'sparkle';
@@ -146,4 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
     sparkle.style.animationDuration = 1 + Math.random() * 2 + 's';
     document.body.appendChild(sparkle);
   }
+}
+
+// 页面加载完成后执行
+document.addEventListener('DOMContentLoaded', () => {
+  loadSidebar();
+  createSparkles();
 });

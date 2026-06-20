@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="坠入层层叠叠 - Haoliday" data-en="Falling into Layers (and Layers) - Haoliday">坠入层层叠叠 - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 静帧图片容器：两张横着排列 */
+    .stills-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+
+    .stills-container img {
+      width: 48%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* 视频容器保持原有样式 */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 2rem auto;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 三章横向布局 */
+    .chapters-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;       /* 手机端自动换行 */
+      justify-content: space-between;
+      margin: 2rem 0;
+    }
+
+    .chapter {
+      flex: 1 1 30%;         /* 三列布局，每列最小宽度30% */
+      min-width: 250px;      /* 手机端不会太窄 */
+      background: rgba(255,255,255,0.05); /* 背景区分 */
+      padding: 1rem;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    .chapter h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: yellow;
+      text-align: center;
+    }
+
+    .chapter p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+    <h1 data-zh="坠入层层叠叠" data-en="Falling into Layers (and Layers)">坠入层层叠叠</h1>
+
+    <!-- 两张静帧图片 -->
+    <div class="stills-container">
+      <img src="images/层层叠叠_静帧2.jpg" alt="Falling into Layers still 2">
+      <img src="images/层层叠叠_静帧1.jpg" alt="Falling into Layers still 1">
+    </div>
+
+    <!-- 作品介绍文字 -->
+    <p
+      data-zh="多屏影像装置<br>6分27秒<br>2024年<br><br>
+      Falling into Layer (and Layer) is a vertical multi-screen video installation that combines field footage, CGI, and AI-generated images. Taking the skull fossil of Xingxiulong chengi unearthed in Lufeng, Yunnan, as its narrative starting point, the work situates the process of fossil reconstruction within the entangled relations between deep time, technological imagination, and the global cultural industry. Seven vertically arranged screens resemble stacked geological strata, while the central screen forms a horizon of the Anthropocene, connecting the worlds above and below ground, archive and imagination, life and waste.
+      <br>The video unfolds in a media archaeological fashion, around the discovery, reconstruction, and re-sedimentation of the skull. It first begins with the assembling of fragmented fossils, linking the recomposition of the skull fragments to the drift and displacement of continental plates, thereby opening a perspective onto deep time. The work then turns to the reconfiguration of dinosaur imagery through fossil factories, cinematic technology, and the global media industry. Through this globally shared image of the dinosaur, it makes visible how technology and capital together compress geographical distance and historical time. Finally, the work juxtaposes fossils with electronic waste, entering the strata of today’s media environment to continue searching for waste, while reflecting on the linear narrative of technological progress. The work asks: faced with these seemingly solidified archives, can we still understand them as a form of life that has not yet ended? Within a linear time, constantly reconstructed, compressed, and archived by technology, what kinds of pasts might begin to flow again?
+
+
+      "
+      
+      data-en="Multi-screen video installation<br>6′27″<br>2024<br><br>
+      Falling into Layer (and Layer) is a vertical multi-screen video installation that combines field footage, CGI, and AI-generated images. Taking the skull fossil of Xingxiulong chengi unearthed in Lufeng, Yunnan, as its narrative starting point, the work situates the process of fossil reconstruction within the entangled relations between deep time, technological imagination, and the global cultural industry. Seven vertically arranged screens resemble stacked geological strata, while the central screen forms a horizon of the Anthropocene, connecting the worlds above and below ground, archive and imagination, life and waste.
+      <br>The video unfolds in a media archaeological fashion, around the discovery, reconstruction, and re-sedimentation of the skull. It first begins with the assembling of fragmented fossils, linking the recomposition of the skull fragments to the drift and displacement of continental plates, thereby opening a perspective onto deep time. The work then turns to the reconfiguration of dinosaur imagery through fossil factories, cinematic technology, and the global media industry. Through this globally shared image of the dinosaur, it makes visible how technology and capital together compress geographical distance and historical time. Finally, the work juxtaposes fossils with electronic waste, entering the strata of today’s media environment to continue searching for waste, while reflecting on the linear narrative of technological progress. The work asks: faced with these seemingly solidified archives, can we still understand them as a form of life that has not yet ended? Within a linear time, constantly reconstructed, compressed, and archived by technology, what kinds of pasts might begin to flow again?
+
+">
+      作品简介
+    </p>
+
+  <!-- 三章横向剧本 -->
+  <section class="script">
+  
+    <div class="chapters-container">
+  
+
+      <!-- 第一章 -->
+      <article class="chapter">
+        <h3 data-zh="头骨拼接与板块漂移" data-en="Cranial Assembly and Continental Drift">
+          第一章：头骨拼接与板块漂移
+        </h3>
+        <p 
+          data-zh="“楚雄禄丰，发现一个基于蜥脚型类恐龙的新属种——程氏星宿龙。面对三具埋藏在一起的装架标本古生物学家说：“星宿龙的发现丰富了禄丰组中基干蜥脚型类的多样性，也表明了蜥脚型类早期的演化过程要比先前的认知更加复杂。”出土的头骨化石像一个满布褶皱的纸团，等待着被揉开、还原和再次想象历史在板块的耦合中沉积，漆黑的孔隙诱人深入……”" 
+          data-en="“Lufeng, Chuxiong — a new genus and species of sauropodomorph dinosaur is identified: Xingxiulong chengi. Three specimens were found buried together. Paleontologists note that the discovery of Xingxiulong chengi enriches the diversity of sauropodomorphs in the Lufeng Formation, and suggests a more complex early evolutionary process than previously understood. The unearthed skull fossil is like a crumpled sheet of paper, waiting to be unfolded, reconstructed, and reimagined History settles within the coupling of tectonic plates Dark cavities draw one inward”">
+        </p>
+      </article>
+  
+      <!-- 第二章 -->
+      <article class="chapter">
+        <h3 data-zh="头骨坍缩与时空压缩" data-en="Cranial Collapse and Time–Space Compression">
+          第二章：头骨坍缩与时空压缩
+        </h3>
+        <p 
+          data-zh="“远离云南禄丰的侏罗纪公园有着肥沃的技术土壤，在那里恐龙边复活边进化，更多的牙齿、更细腻的皮肤，更肌肉发达血脉喷张。技术是人类世的地平线，隧道、地下交通、下水道系统，地表之下黑暗不可见。高速运转的地铁里，发光的站点名犹如一个个可以生成图像的神秘咒语，在停靠间隙召唤出对于地上世界的想象。受力于旷日持久的地质作用，星宿龙头骨发生错位，上颌骨连带齿骨被向内挤压。相离的两端正在靠近，多重时间因此压缩。电影技术、还原技术、生产技术，物理距离的定义发生改变，全球网络彼此纠缠。海内存知己，天涯若比邻。无论来自哪里，至少我们可以眺望同一只恐龙，它目光如炬，脚步坚定，迈向未来。”"
+          data-en="“Far from Lufeng, Yunnan — Jurassic Park emerges as fertile soil of technology There, dinosaurs are resurrecting and evolving: more teeth, finer skin, hyper-muscular bodies, veins pulsing with life Technology is the horizon of the Anthropocene Within the tirelessly running subway lines, glowing station names function like generative spells, summoning visions of the world above ground during brief pauses between stops Tunnels, Underground transportation, Sewer systems Dark and invisible beneath the surface of the earth The maxilla and dentary are pressed inward, dislocating the skull of Xingxiulong chengi. Under prolonged geological forces, what was once separated begins to converge — compressing multiple temporalities into one. industrial fabrication, archaeological restoration, and cinematic technology—definitions of physical distance are being rewritten, as global networks become ever more entangled. Across distances, we remain in proximity. No matter where we come from, we gaze upon the same dinosaur — its eyes sharp, its steps unwavering, moving toward the future.”">
+        </p>
+      </article>
+  
+      <!-- 第三章 -->
+      <article class="chapter">
+        <h3 data-zh="头骨掩埋与信息存档" data-en="Cranial Burial and Information Archiving">
+          第三章：头骨掩埋与信息存档
+        </h3>
+        <p 
+          data-zh="“深层时间以确凿的形状被盖棺定论，固定成历史，压缩成化石“罗伯特•史密斯森说过：‘像恐龙这样的废物必须回归灰尘或铁锈。’被废弃、被掩埋，被载入巨大的地质存储。化石提醒我们，垂死的事物并未消失。1.3KG化石燃料可以制造一枚微芯片，而在世界工厂深圳，废弃的廉价电子产品回归地下，融入地质记忆旅行者号停航，黄金唱片流浪，僵尸媒介层向外扩张苍穹之下，没有人知道光滑洁白的云如何触摸，飘向何方，又是否在地图上？抛光iPhone产生的灰尘附着在富士康工人急速起伏的胸部和无法松弛的神经，落在不断更新的CPU上迭代升级进化，地层是否也有不断扩大的数字代号，取代侵蚀、沉积、固结和隆起三维软件里，星宿龙头骨终于被还原出来，并以bit态被掩埋，占用了33Mb的硬盘空间”"
+          data-en="
+          “Deep time solidifies into definite form — crystalizes into history, compressed into fossils. Robert Smithson wrote: Waste like dinosaurs must return to dust or rust. Abandoned, buried, stored in vast geological deposits— fossils remind us:what is dying does not disappear. 1.3 kilograms of fossil fuels can produce a microchip, while in the world's factory, Shenzhen, discarded cheap electronic products return to the ground, merging into the geological memory. Voyager drifts beyond its mission; the Golden Record wanders on. Layers of zombie media continues to expand outward. Beneath this sky, no one knows how those smooth white Cloud might be touched — where they drift, or whether they exist on any map at all. The dust from polishing iPhones clings to the heaving chests and taut nerves of Foxconn workers, settling on the constantly updating CPUs. Iterate. Upgrade. Evolve. Do geological strata also acquire expanding digital suffixes — replacing erosion, sedimentation, consolidation, and uplift? In 3D software, the skull of Xingxiulong chengi is finally restored — then buried again as bits, occupying 33MB of disk space.”">
+        </p>
+      </article>
+  
+    </div>
+  </section>
+
+
+    <!-- 视频 -->
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/GYQrhSi4SYc?si=v08jts6Cc3Tn34RU" allowfullscreen></iframe>
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+</body>
+</html>

@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="finally i could feel the rain - Haoliday" data-en="finally i could feel the rain - Haoliday">finally i could feel the rain - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    :root {
+      --rain-x: 50vw;
+      --rain-y: 50vh;
+      --rain-scale: 1;
+      --rain-rot-y: 0deg;
+      --rain-rot-x: 0deg;
+      --rain-rot-z: 0deg;
+      --rain-x-num: 50;
+    }
+
+    body.rain-work-page {
+      min-height: 270vh;
+      background:
+        radial-gradient(circle at 72% 12%, rgba(255,255,255,0.045), transparent 30%),
+        linear-gradient(to bottom, #050505 0%, #090909 45%, #050505 100%);
+    }
+
+    .rain-hero-spacer {
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 8vw 9vh;
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+      margin-left: 10vw;
+    }
+
+    .rain-hero-title {
+      max-width: 620px;
+      font-size: clamp(2.2rem, 4.6vw, 4.7rem);
+      line-height: 1.04;
+      font-weight: normal;
+      letter-spacing: -0.04em;
+      margin: 0;
+      opacity: 0.86;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .rain-installation {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4; /* lower than sidebar */
+      overflow: hidden;
+      perspective: 1300px;
+    }
+
+    .rain-installation::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 28vw;
+      height: 100vh;
+      background: linear-gradient(to left, rgba(0,0,0,0.42), rgba(0,0,0,0));
+      opacity: calc((var(--rain-x-num) - 50) / 30);
+      pointer-events: none;
+    }
+
+    .rain-screen-object {
+      position: fixed;
+      left: var(--rain-x);
+      top: var(--rain-y);
+      width: min(34vw, 390px);
+      aspect-ratio: 9 / 16;
+      transform:
+        translate(-50%, -50%)
+        scale(var(--rain-scale))
+        rotateX(var(--rain-rot-x))
+        rotateY(var(--rain-rot-y))
+        rotateZ(var(--rain-rot-z));
+      transform-origin: center center;
+      pointer-events: auto;
+      transition: filter 180ms ease;
+    }
+
+    .rain-slab {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 12px;
+      border-radius: 0;
+      background:
+        linear-gradient(145deg, #3b3b3b 0%, #191919 55%, #080808 100%);
+      border: 2px solid rgba(150, 150, 150, 0.30);
+      overflow: hidden;
+      box-shadow:
+        -12px 16px 28px rgba(0,0,0,0.58),
+        inset 0 0 18px rgba(255,255,255,0.06),
+        inset 0 0 32px rgba(0,0,0,0.58);
+      will-change: transform;
+    }
+
+    .rain-slab video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: black;
+      border-radius: 0;
+      filter: none;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.10),
+        inset 0 0 30px rgba(0,0,0,0.8);
+    }
+
+    .rain-screen-object::after {
+      content: "";
+      position: absolute;
+      left: 13%;
+      bottom: -34px;
+      width: 92%;
+      height: 36px;
+      background: rgba(0,0,0,0.62);
+      filter: blur(8px);
+      border-radius: 50%;
+      transform: skewX(-16deg);
+      z-index: -1;
+      opacity: 0.88;
+    }
+
+    .rain-screen-object:hover {
+      filter: brightness(1.04);
+    }
+
+    .rain-sound-btn {
+      position: absolute;
+      left: 50%;
+      bottom: -68px;
+      transform: translateX(-50%);
+      padding: 9px 14px 10px;
+      border: 1px solid rgba(255,255,255,0.30);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.55);
+      color: rgba(255,255,255,0.88);
+      font-size: clamp(14px, 1.15vw, 17px);
+      line-height: 1;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      white-space: nowrap;
+      pointer-events: auto;
+      text-shadow: 0 1px 7px rgba(0,0,0,0.95);
+      /* backdrop-filter removed for smoother scrolling */
+    }
+
+    .rain-sound-btn:hover {
+      color: rgba(255,255,255,1);
+      border-color: rgba(255,255,255,0.55);
+      background: rgba(0,0,0,0.74);
+    }
+
+    .rain-work-content {
+      position: relative;
+      z-index: 5;
+      max-width: 720px;
+      margin-left: 16vw;
+      margin-right: auto;
+      padding: 10vh 2rem 42vh;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .rain-work-content h1 {
+      color: rgba(255,255,255,0.88);
+      font-size: 2rem;
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .rain-meta {
+      margin: 0 0 2rem;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.96rem;
+      line-height: 1.7;
+      font-weight: normal;
+    }
+
+    .rain-description {
+      margin: 0 0 1.3rem;
+      color: rgba(255,255,255,0.82);
+      font-size: 1rem;
+      line-height: 1.72;
+      font-weight: normal;
+    }
+
+    .rain-recordings {
+      margin-top: 5rem;
+    }
+
+    .rain-recordings h2 {
+      color: rgba(255,255,255,0.86);
+      font-size: 1rem;
+      font-weight: normal;
+      font-style: italic;
+      margin: 0 0 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* A loose collage instead of a tidy 2x2 grid */
+    .rain-recording-collage {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1.15rem;
+      align-items: start;
+      margin-top: 1.2rem;
+    }
+
+    .rain-recording-card {
+      margin: 0;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.035);
+      padding: 0.65rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.24);
+      content-visibility: auto;
+      contain-intrinsic-size: 420px 620px;
+      transform-origin: center center;
+    }
+
+    .rain-recording-card:nth-child(1) {
+      grid-column: 1 / span 7;
+      transform: rotate(-1.1deg);
+    }
+
+    .rain-recording-card:nth-child(2) {
+      grid-column: 7 / span 6;
+      margin-top: 3.2rem;
+      transform: rotate(1.2deg);
+    }
+
+    .rain-recording-card:nth-child(3) {
+      grid-column: 2 / span 5;
+      margin-top: -0.6rem;
+      transform: rotate(0.7deg);
+    }
+
+    .rain-recording-card:nth-child(4) {
+      grid-column: 6 / span 7;
+      margin-top: 2.1rem;
+      transform: rotate(-0.8deg);
+    }
+
+    .rain-recording-card video,
+    .rain-recording-card img {
+      width: 100%;
+      display: block;
+      background: #111;
+    }
+
+    .rain-recording-card img {
+      height: auto;
+    }
+
+    .rain-recording-card figcaption {
+      margin-top: 0.55rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .rain-recording-card a {
+      color: yellow;
+      text-decoration: none;
+      text-shadow: 1px 1px 0 black;
+    }
+
+    .rain-recording-card a:hover {
+      text-shadow: 0 0 12px pink;
+    }
+
+    @media screen and (max-width: 768px) {
+      body.rain-work-page {
+        min-height: 310vh;
+      }
+
+      .rain-hero-spacer {
+        margin-left: 7.1rem;
+        padding-left: 0.7rem;
+        padding-right: 0.8rem;
+      }
+
+      .rain-hero-title {
+        font-size: clamp(1.8rem, 9vw, 3.2rem);
+        line-height: 1.12;
+      }
+
+      .rain-screen-object {
+        width: 62vw;
+      }
+
+      .rain-slab {
+        padding: 9px;
+        box-shadow:
+          -12px 16px 32px rgba(0,0,0,0.70),
+          8px 11px 22px rgba(0,0,0,0.50),
+          inset 0 0 18px rgba(255,255,255,0.07),
+          inset 0 0 36px rgba(0,0,0,0.66);
+      }
+
+      .rain-screen-object::after {
+        bottom: -28px;
+        height: 28px;
+      }
+
+      .rain-sound-btn {
+        bottom: -54px;
+        font-size: 14px;
+        padding: 8px 13px 9px;
+        background: rgba(0,0,0,0.72);
+      }
+
+      .rain-work-content {
+        margin-left: 7.1rem;
+        margin-right: 0.8rem;
+        padding: 6vh 0.8rem 92vh 0.8rem;
+        max-width: calc(100vw - 7.9rem);
+      }
+
+      .rain-work-content h1 {
+        font-size: 1.35rem;
+      }
+
+      .rain-description {
+        font-size: 0.92rem;
+        line-height: 1.58;
+      }
+
+      .rain-recording-collage {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .rain-recording-card:nth-child(1) {
+        width: 94%;
+        align-self: flex-start;
+        margin-top: 0;
+        transform: rotate(-0.7deg);
+      }
+
+      .rain-recording-card:nth-child(2) {
+        width: 88%;
+        align-self: flex-end;
+        margin-top: 0.2rem;
+        transform: rotate(0.9deg);
+      }
+
+      .rain-recording-card:nth-child(3) {
+        width: 96%;
+        align-self: flex-start;
+        margin-top: 0;
+        transform: rotate(0.4deg);
+      }
+
+      .rain-recording-card:nth-child(4) {
+        width: 82%;
+        align-self: center;
+        margin-top: 0.2rem;
+        transform: rotate(-0.8deg);
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      .rain-screen-object {
+        width: 58vw;
+      }
+
+      .rain-hero-spacer,
+      .rain-work-content {
+        margin-left: 6.45rem;
+      }
+
+      .rain-work-content {
+        max-width: calc(100vw - 7rem);
+        padding-bottom: 96vh;
+      }
+    }
+
+    /* safety: transparent sidebar no-overlap rules for this page */
+    @media screen and (max-width: 768px) {
+      body.rain-work-page nav#sidebar {
+        width: 6.9rem;
+        margin-left: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background: transparent;
+      }
+
+      body.rain-work-page nav#sidebar a {
+        width: 6.2rem;
+        max-width: 6.2rem;
+        white-space: normal;
+        overflow-wrap: break-word;
+        text-align: center;
+        line-height: 1.12;
+        font-size: 0.6rem;
+        margin: 0.42rem 0;
+        padding: 0.16rem 0.18rem;
+      }
+
+      body.rain-work-page nav#sidebar a:hover,
+      body.rain-work-page nav#sidebar a.active {
+        transform: scale(1.08);
+      }
+
+      body.rain-work-page nav#sidebar a img {
+        max-width: 4.5rem !important;
+        max-height: 4.5rem !important;
+        width: auto !important;
+        height: auto !important;
+      }
+
+      body.rain-work-page #sidebar .lang-btn img,
+      body.rain-work-page #lang-switch img {
+        width: 3.9rem !important;
+        height: auto !important;
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      body.rain-work-page nav#sidebar {
+        width: 6.3rem;
+      }
+
+      body.rain-work-page nav#sidebar a {
+        width: 5.75rem;
+        max-width: 5.75rem;
+        font-size: 0.56rem;
+      }
+
+      body.rain-work-page nav#sidebar a img {
+        max-width: 4.05rem !important;
+        max-height: 4.05rem !important;
+      }
+
+      body.rain-work-page #sidebar .lang-btn img,
+      body.rain-work-page #lang-switch img {
+        width: 3.55rem !important;
+      }
+    }
+
+
+
+    /* click-to-play memorial videos: poster first, video loads only after click */
+    .rain-video-poster {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: none;
+      background: #111;
+      cursor: pointer;
+      overflow: hidden;
+      color: white;
+    }
+
+    .rain-video-poster img {
+      width: 100%;
+      display: block;
+      height: auto;
+      filter: brightness(0.88);
+      transition: filter 180ms ease, transform 180ms ease;
+    }
+
+
+    .rain-video-poster video {
+      width: 100%;
+      display: block;
+      height: auto;
+      background: #111;
+      filter: brightness(0.88);
+      transition: filter 180ms ease, transform 180ms ease;
+    }
+
+    .rain-video-poster:hover video {
+      filter: brightness(1);
+      transform: scale(1.012);
+    }
+
+    .rain-video-poster:hover img {
+      filter: brightness(1);
+      transform: scale(1.012);
+    }
+
+    .rain-video-poster::after {
+      content: "play";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0.55rem 0.9rem 0.62rem;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.56);
+      color: rgba(255,255,255,0.94);
+      font-size: 0.9rem;
+      line-height: 1;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.85);
+    }
+
+    .rain-recording-card video.is-loaded {
+      width: 100%;
+      display: block;
+      background: #111;
+    }
+
+    /* performance mode */
+    @media screen and (max-width: 768px) {
+      .rain-slab {
+        box-shadow:
+          -8px 10px 18px rgba(0,0,0,0.58),
+          inset 0 0 14px rgba(255,255,255,0.05),
+          inset 0 0 24px rgba(0,0,0,0.52) !important;
+      }
+
+      .rain-screen-object::after {
+        filter: blur(6px);
+        opacity: 0.62;
+      }
+
+      .rain-recording-card {
+        box-shadow: 0 8px 16px rgba(0,0,0,0.22);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rain-screen-object {
+        transition: none;
+      }
+    }
+
+
+    /* final tweaks: yellow visiting title and smaller memorial collage */
+    .rain-recordings h2 {
+      color: yellow !important;
+      font-weight: bold !important;
+      text-shadow: 1px 1px 0 black, 0 0 10px rgba(255,255,0,0.25);
+    }
+
+    .rain-recording-collage {
+      max-width: 620px;
+      gap: 1.05rem;
+    }
+
+    .rain-recording-card:nth-child(1) {
+      grid-column: 1 / span 5;
+    }
+
+    .rain-recording-card:nth-child(2) {
+      grid-column: 6 / span 5;
+      margin-top: 2.6rem;
+    }
+
+    .rain-recording-card:nth-child(3) {
+      grid-column: 2 / span 4;
+      margin-top: -0.4rem;
+    }
+
+    .rain-recording-card:nth-child(4) {
+      grid-column: 6 / span 5;
+      margin-top: 1.8rem;
+    }
+
+    @media screen and (max-width: 768px) {
+      .rain-recording-card:nth-child(1) {
+        width: 82%;
+      }
+
+      .rain-recording-card:nth-child(2) {
+        width: 76%;
+      }
+
+      .rain-recording-card:nth-child(3) {
+        width: 84%;
+      }
+
+      .rain-recording-card:nth-child(4) {
+        width: 74%;
+      }
+    }
+
+
+    /* final layout adjustment: larger visiting posts, right-leaning screen, less bottom blank */
+    body.rain-work-page {
+      min-height: 100vh !important;
+    }
+
+    .rain-work-content {
+      padding-bottom: 12vh !important;
+    }
+
+    .rain-recording-collage {
+      max-width: 720px !important;
+      gap: 1.15rem !important;
+    }
+
+    .rain-recording-card:nth-child(1) {
+      grid-column: 1 / span 6 !important;
+    }
+
+    .rain-recording-card:nth-child(2) {
+      grid-column: 7 / span 5 !important;
+      margin-top: 2.4rem !important;
+    }
+
+    .rain-recording-card:nth-child(3) {
+      grid-column: 2 / span 5 !important;
+      margin-top: -0.3rem !important;
+    }
+
+    .rain-recording-card:nth-child(4) {
+      grid-column: 7 / span 5 !important;
+      margin-top: 1.7rem !important;
+    }
+
+    @media screen and (max-width: 768px) {
+      body.rain-work-page {
+        min-height: 100vh !important;
+      }
+
+      .rain-work-content {
+        padding-bottom: 20vh !important;
+      }
+
+      .rain-recording-card:nth-child(1) {
+        width: 90% !important;
+      }
+
+      .rain-recording-card:nth-child(2) {
+        width: 84% !important;
+      }
+
+      .rain-recording-card:nth-child(3) {
+        width: 92% !important;
+      }
+
+      .rain-recording-card:nth-child(4) {
+        width: 82% !important;
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      .rain-work-content {
+        padding-bottom: 22vh !important;
+      }
+    }
+
+
+    /* stronger leaning perspective */
+    .rain-installation {
+      perspective: 900px !important;
+    }
+
+    .rain-screen-object {
+      transform-origin: center bottom !important;
+    }
+
+
+
+    /* mobile fix v2: main grave is higher and sits behind the memorial posts */
+    @media screen and (max-width: 768px) {
+      .rain-installation {
+        z-index: 4 !important; /* behind content/posts, above background */
+      }
+
+      .rain-screen-object {
+        width: 70vw !important;
+      }
+
+      .rain-work-content,
+      .rain-hero-spacer,
+      .rain-recordings {
+        position: relative;
+        z-index: 6;
+      }
+
+      .rain-recording-collage {
+        gap: 2.2rem !important; /* leave breathing gaps so the grave can still appear */
+      }
+
+      .rain-recording-card {
+        background: rgba(255,255,255,0.025);
+      }
+
+      nav#sidebar {
+        z-index: 30 !important;
+      }
+    }
+
+    @media screen and (max-width: 430px) {
+      .rain-screen-object {
+        width: 66vw !important;
+      }
+
+      .rain-recording-collage {
+        gap: 2.5rem !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body class="rain-work-page">
+  <div id="sidebar-placeholder"></div>
+
+  <div class="rain-installation" aria-hidden="false">
+    <div class="rain-screen-object" id="rainScreen">
+      <div class="rain-slab">
+        <!-- Keep graveLoopForWeb.mp4 in the same folder as this HTML file, or update the path below. -->
+        <video id="rainVideo" autoplay muted loop playsinline preload="auto">
+          <source src="graveLoopForWeb.mp4" type="video/mp4">
+        </video>
+      </div>
+      <button
+        class="rain-sound-btn"
+        id="rainSoundBtn"
+        type="button"
+        data-zh="打开雨声"
+        data-en="turn on the rain"
+        data-zh-on="打开雨声"
+        data-en-on="turn on the rain"
+        data-zh-off="关掉雨声"
+        data-en-off="turn off the rain">turn on the rain</button>
+    </div>
+  </div>
+
+  <section class="rain-hero-spacer">
+    <h1 class="rain-hero-title" data-zh="finally i could feel the rain" data-en="finally i could feel the rain">finally i could feel the rain</h1>
+  </section>
+
+  <main class="content rain-work-content">
+    <h1 data-zh="终于我能感觉到雨了" data-en="finally i could feel the rain">finally i could feel the rain</h1>
+
+    <p
+      class="rain-meta"
+      data-zh="2026年<br>影像装置"
+      data-en="2026<br>video installation">
+      2026年<br>影像装置
+    </p>
+
+    <p
+      class="rain-description"
+      data-zh="《终于我能感觉到雨了》来源于时常经历的自动运行、像和世界隔着点什么的时刻。我常常幻想也许等我死了，会有一个最普通款式的花岗岩坟墓，那个时候终于可以好好感受这个世界了。"
+      data-en="This work comes from moments I often experience: moving automatically, as if something stands between me and the world. I often imagine that perhaps after I die, I will have the most ordinary kind of granite grave, and by then I might finally be able to properly feel the world.">
+      《终于我能感觉到雨了》来源于时常经历的自动运行、像和世界隔着点什么的时刻。我常常幻想也许等我死了，会有一个最普通款式的花岗岩坟墓，那个时候终于可以好好感受这个世界了。
+    </p>
+
+    <p
+      class="rain-description"
+      data-zh="作品由此出发，试图制造一种矛盾的倒置。在这个荒诞而感性的场景里，死亡不再只是终点，而成为重新感受世界的入口。墓碑不只是死亡符号，而像一块面向外部世界的屏幕。我既被保存在其中，也被困在其中。那场暧昧的、被模拟出来的雨，我真的感受到了吗？"
+      data-en="Starting from this thought, the work attempts to create a contradictory reversal. In this absurd yet emotional scene, death is no longer only an endpoint, but becomes an entrance to sensing the world again. The tombstone is not only a symbol of death, but also like a screen facing the outside world. I am both preserved within it and trapped inside it. That ambiguous, simulated rain — did I really feel it?">
+      作品由此出发，试图制造一种矛盾的倒置。在这个荒诞而感性的场景里，死亡不再只是终点，而成为重新感受世界的入口。墓碑不只是死亡符号，而像一块面向外部世界的屏幕。我既被保存在其中，也被困在其中。那场暧昧的、被模拟出来的雨，我真的感受到了吗？
+    </p>
+
+    <section class="rain-recordings">
+      <h2
+        data-zh="Thanks for your visiting"
+        data-en="Thanks for your visiting">
+        Thanks for your visiting
+      </h2>
+
+      <div class="rain-recording-collage">
+        <figure class="rain-recording-card">
+          <img src="Zeynep.jpg" alt="memorial recording by @Zenep" loading="lazy">
+          <figcaption>
+            <a href="https://www.instagram.com/zeynepbafrali?igsh=MTRiOGVrczV4cHA1" target="_blank" rel="noopener">@Zeynep🔮🧚🏽‍♀️🦋🌪🤪</a>
+          </figcaption>
+        </figure>
+
+        <figure class="rain-recording-card">
+          <button class="rain-video-poster" type="button" data-video-src="dianfanbao.mp4">
+            <video muted playsinline preload="metadata">
+              <source src="dianfanbao.mp4#t=0.1" type="video/mp4">
+            </video>
+          </button>
+          <figcaption>
+            <a href="https://www.instagram.com/wennfaye?igsh=cTd5d3RhMzNoNXM2" target="_blank" rel="noopener">@wenfei電飯宝</a>
+          </figcaption>
+        </figure>
+
+        <figure class="rain-recording-card">
+          <button class="rain-video-poster" type="button" data-video-src="yuan.mp4">
+            <video muted playsinline preload="metadata">
+              <source src="yuan.mp4#t=0.1" type="video/mp4">
+            </video>
+          </button>
+          <figcaption>
+            <a href="https://www.instagram.com/suayuanyuan?igsh=MXdmeWExNXR0MXpwdA==" target="_blank" rel="noopener">@y ua n y u an</a>
+          </figcaption>
+        </figure>
+
+        <figure class="rain-recording-card">
+          <button class="rain-video-poster" type="button" data-video-src="yuanX.mp4">
+            <video muted playsinline preload="metadata">
+              <source src="yuanX.mp4#t=0.1" type="video/mp4">
+            </video>
+          </button>
+          <figcaption>
+            <a href="https://www.instagram.com/yyyyuanxx?igsh=MWR5cG5qYTZpNmtlMg==" target="_blank" rel="noopener">@yuan xue</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+
+  <script>
+    const root = document.documentElement;
+    const rainVideo = document.getElementById("rainVideo");
+    const rainSoundBtn = document.getElementById("rainSoundBtn");
+    let ticking = false;
+
+    function easeInOut(t) {
+      return t * t * (3 - 2 * t);
+    }
+
+    function getCurrentLang() {
+      const htmlLang = (document.documentElement.lang || "").toLowerCase();
+      if (htmlLang.startsWith("zh")) return "zh";
+
+      const storedLang =
+        localStorage.getItem("lang") ||
+        localStorage.getItem("language") ||
+        localStorage.getItem("siteLang") ||
+        "";
+
+      if (storedLang === "zh") return "zh";
+      if (storedLang === "en") return "en";
+
+      const activeBtn = document.querySelector(".lang-btn.active, .lang-btn.selected");
+      if (activeBtn && activeBtn.dataset.lang) return activeBtn.dataset.lang;
+
+      return "en";
+    }
+
+    function updateSoundButtonLabel() {
+      const lang = getCurrentLang();
+      const isMuted = rainVideo.muted;
+      const attr = isMuted ? `data-${lang}-on` : `data-${lang}-off`;
+      rainSoundBtn.textContent = rainSoundBtn.getAttribute(attr) || (isMuted ? "turn on the rain" : "turn off the rain");
+    }
+
+    function updateRainInstallation() {
+      const isMobile = window.innerWidth <= 768;
+      const maxScroll = window.innerHeight * (isMobile ? 1.25 : 1.12);
+      const raw = Math.min(window.scrollY / maxScroll, 1);
+      const retreatEnd = isMobile ? 0.42 : 0.36;
+
+      let x, y, scale, rotY, rotX, rotZ;
+
+      if (raw <= retreatEnd) {
+        const p1 = easeInOut(raw / retreatEnd);
+
+        x = 50;
+        y = 50;
+        scale = 1 - (isMobile ? 0.22 : 0.16) * p1;
+        rotY = 0;
+        rotX = 0;
+        rotZ = 0;
+      } else {
+        const p2 = easeInOut((raw - retreatEnd) / (1 - retreatEnd));
+
+        if (isMobile) {
+          x = 50 + 30 * p2;          // 50vw -> 80vw
+          y = 50 + 23 * p2;          // 50vh -> 73vh, not too low on mobile
+          scale = 0.80 - 0.08 * p2;  // 0.80 -> 0.72
+          rotY =-20 * p2;
+          rotX = -5 * p2;
+          rotZ = 4 * p2;
+        } else {
+          x = 50 + 31 * p2;
+          y = 50 + 10 * p2;
+          scale = 0.84 - 0.02 * p2;
+          rotY = -22 * p2;
+          rotX = 1.8 * p2;
+          rotZ = 4.2 * p2;
+        }
+      }
+
+      root.style.setProperty("--rain-x", x + "vw");
+      root.style.setProperty("--rain-y", y + "vh");
+      root.style.setProperty("--rain-scale", scale);
+      root.style.setProperty("--rain-rot-y", rotY + "deg");
+      root.style.setProperty("--rain-rot-x", rotX + "deg");
+      root.style.setProperty("--rain-rot-z", rotZ + "deg");
+      root.style.setProperty("--rain-x-num", x);
+
+      ticking = false;
+    }
+
+    function requestRainUpdate() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateRainInstallation);
+        ticking = true;
+      }
+    }
+
+    rainSoundBtn.addEventListener("click", function () {
+      rainVideo.muted = !rainVideo.muted;
+      if (!rainVideo.muted) {
+        rainVideo.volume = 0.85;
+        rainVideo.play();
+      }
+      updateSoundButtonLabel();
+    });
+
+    rainVideo.addEventListener("click", function () {
+      rainVideo.muted = !rainVideo.muted;
+      if (!rainVideo.muted) {
+        rainVideo.volume = 0.85;
+        rainVideo.play();
+      }
+      updateSoundButtonLabel();
+    });
+
+    // Memorial videos: show poster first, load video only after click.
+    function pauseOtherMemorialVideos(activeVideo) {
+      document.querySelectorAll(".rain-recording-card video").forEach((other) => {
+        if (other !== activeVideo) other.pause();
+      });
+    }
+
+    document.querySelectorAll(".rain-video-poster").forEach((posterButton) => {
+      posterButton.addEventListener("click", () => {
+        const videoSrc = posterButton.dataset.videoSrc;
+        const video = document.createElement("video");
+
+        video.className = "is-loaded";
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        video.autoplay = true;
+
+        const source = document.createElement("source");
+        source.src = videoSrc;
+        source.type = "video/mp4";
+        video.appendChild(source);
+
+        video.addEventListener("play", () => pauseOtherMemorialVideos(video));
+
+        posterButton.replaceWith(video);
+        video.play();
+      });
+    });
+
+    window.addEventListener("scroll", requestRainUpdate, { passive: true });
+    window.addEventListener("resize", requestRainUpdate);
+
+    const observer = new MutationObserver(updateSoundButtonLabel);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+
+    document.addEventListener("click", function (event) {
+      if (event.target.closest(".lang-btn")) {
+        setTimeout(updateSoundButtonLabel, 80);
+      }
+    });
+
+    updateRainInstallation();
+    updateSoundButtonLabel();  </script>
+</body>
+</html>

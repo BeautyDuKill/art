@@ -75,13 +75,15 @@
     }
 
     .orbit {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      animation: rotateOrbit linear infinite;
-    }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: rotateOrbit linear infinite;
+    /* 关键：透明轨道本身不拦截鼠标 */
+    pointer-events: none;
+  }
 
     /* 悬停效果 - 暂停公转，只进行自转 */
     .orbit.hover-paused {
@@ -154,24 +156,24 @@
 
 </head>
 
-
+<body>
 <div id="intro">
   <div id="shellPlanet">
-    <img src="shellWithMe.png" style="width: 300px;" />
+    <img src="images/shellWithMe.png" style="width: 300px;" />
   </div>
 
   <!-- 动画按钮仅作装饰，不触发事件 -->
   <div id="welcome-animation">
-    <img src="backToHaoliday.gif" alt="Welcome" style="width: 200px;">
+    <img src="images/backToHaoliday.gif" alt="Welcome" style="width: 200px;">
   </div>
 
   <!-- 语言选择按钮 -->
   <div id="language-select">
     <button id="btn-cn" class="lang-btn">
-      <img src="button_cn.png" alt="中文入口" style="width: 160px;">
+      <img src="images/button_cn.png" alt="中文入口" style="width: 160px;">
     </button>
     <button id="btn-en" class="lang-btn">
-      <img src="button_en.png" alt="English Entrance" style="width: 160px;">
+      <img src="images/button_en.png" alt="English Entrance" style="width: 160px;">
     </button>
   </div>
 </div>
@@ -180,13 +182,13 @@
 
 
   <div id="sidebar-placeholder"></div>
-
+  <script src="common.js"></script> 
   <div class="planet-container">
   
   
     <div class="orbit" style="width: 400px; height: 700px; animation-duration: 10s;">
       <div class="planet">
-        <a href="aboutMe.html"><img src="shellWithMe.png" alt="me" /></a>
+        <a href="aboutMe.html"><img src="images/shellWithMe.png" alt="me" /></a>
       </div>
     </div>
 
@@ -194,7 +196,7 @@
 
     <div class="orbit" style="width: 200px; height: 800px; animation-duration: 15s;">
       <div class="planet">
-        <a href="page1.html"><img src="椅子气球.png" alt="作品一" /></a>
+        <a href="WorkNaturalTheater.html"><img src="images/椅子气球.png" alt="作品一" /></a>
       </div>
     </div>
 
@@ -203,7 +205,7 @@
     
     <div class="orbit" style="width: 1000px; height: 500px; animation-duration: 35s;">
       <div class="planet">
-        <a href="page3.html"><img src="坠入层层叠叠.png" alt="作品三" /></a>
+        <a href="WorkFalling.html"><img src="images/坠入层层叠叠.png" alt="作品三" /></a>
       </div>
     </div>
 
@@ -211,30 +213,31 @@
 
     <div class="orbit" style="width: 100px; height: 900px; animation-duration: 13s;">
       <div class="planet">
-        <a href="page5.html"><img src="EMO机.png" alt="作品五" /></a>
+        <a href="WorkEmoji.html"><img src="images/EMO机.png" alt="作品五" /></a>
       </div>
     </div>
 
   
     <div class="orbit" style="width: 200px; height: 500px; animation-duration: 13s;">
       <div class="planet">
-        <a href="page6.html"><img src="大运会.png" alt="作品六" /></a>
+        <a href="WorkYouth.html"><img src="images/大运会.png" alt="作品六" /></a>
       </div>
     </div>
 
     <div class="orbit" style="width: 1400px; height: 300px; animation-duration: 12s;">
       <div class="planet">
-        <a href="page2.html"><img src="新文艺复兴.png" alt="作品二" /></a>
+        <a href="WorkNeoRenaissance.html"><img src="images/新文艺复兴.png" alt="作品二" /></a>
       </div>
     </div>
     
     <div class="orbit" style="width: 600px; height: 500px; animation-duration: 25s;">
       <div class="planet">
-        <a href="page4.html"><img src="PDF2Page.png" alt="作品四" /></a>
+        <a href="WorkPDF.html"><img src="images/PDF2Page.png" alt="作品四" /></a>
       </div>
     </div>
     
   </div>
+  
   
   <script>
     function addPlanetHoverEffect() {
@@ -265,60 +268,70 @@
     addPlanetHoverEffect();
   </script>
   
-  <script>
+<script>
   // —— 中文入口按钮 ——
   document.getElementById('btn-cn').addEventListener('click', () => {
     localStorage.setItem('language', 'zh');
+    if (window.applyLanguage) window.applyLanguage('zh');
     enterMainPage();
   });
-  
+
   // —— 英文入口按钮 ——
   document.getElementById('btn-en').addEventListener('click', () => {
     localStorage.setItem('language', 'en');
+    if (window.applyLanguage) window.applyLanguage('en');
     enterMainPage();
   });
-  
+
   function enterMainPage() {
     document.getElementById('intro').style.display = 'none';
     showPlanetsSequentially();
     showSidebarWithDelay();
     sessionStorage.setItem('seenIntro', '1');
   }
-  
+
+  function showSidebarWhenReady() {
+    const sidebar = document.getElementById('sidebar');
+
+    if (!sidebar) {
+      setTimeout(showSidebarWhenReady, 50);
+      return;
+    }
+
+    if (window.initFullPageLanguage) {
+      window.initFullPageLanguage();
+    }
+
+    sidebar.style.display = 'flex';
+    setTimeout(() => sidebar.classList.add('show'), 50);
+  }
+
   // —— 如果之前已经看过 intro，则直接进入主页面 ——
   if (sessionStorage.getItem('seenIntro')) {
     document.getElementById('intro').style.display = 'none';
     document.querySelectorAll('.planet').forEach(p => p.classList.add('visible'));
-    
-    // 等待sidebar加载完成
-    setTimeout(() => {
-      const sidebar = document.getElementById('sidebar');
-      if (sidebar) sidebar.style.display = 'flex';
-    }, 100);
+    showSidebarWhenReady();
   }
-  </script>
+</script>
 
-  <script>
-      function showPlanetsSequentially() {
-        const planets = document.querySelectorAll('.planet');
-        planets.forEach((planet, index) => {
-          setTimeout(() => {
-            planet.classList.add('visible');
-          }, index * 600); // 600ms 间隔依次显示
-        });
-      }
-      
-      function showSidebarWithDelay() {
-        setTimeout(() => {
-          const sidebar = document.getElementById('sidebar');
-          sidebar.style.display = 'flex';
-          setTimeout(() => sidebar.classList.add('show'), 50); // 触发 opacity 过渡
-        }, document.querySelectorAll('.planet').length * 600 + 300); // 在所有星星之后出现
-      }
-
-  </script>
+<script>
+  function showPlanetsSequentially() {
+    const planets = document.querySelectorAll('.planet');
+    planets.forEach((planet, index) => {
+      setTimeout(() => {
+        planet.classList.add('visible');
+      }, index * 600);
+    });
+  }
+  
+  function showSidebarWithDelay() {
+    setTimeout(() => {
+      showSidebarWhenReady();
+    }, document.querySelectorAll('.planet').length * 600 + 300);
+  }
+</script>
     
-  <script src="common.js"></script>   
+  
 
 
 </body>

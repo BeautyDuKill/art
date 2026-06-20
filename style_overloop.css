@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-y: auto;
+}
+
+:lang(zh) {
+  font-family: 'PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+
+
+
+nav#sidebar {
+  z-index: 10;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 10vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 2rem;
+  background: transparent;
+  margin-left: 0.7rem;
+
+}
+
+nav#sidebar a {
+  margin: 1rem 0;
+  color: yellow;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.3rem;
+  transition: transform 0.3s, text-shadow 0.3s, border 0.3s;
+  text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
+  border: 2px solid transparent; /* 初始无边框 */
+  border-radius: 8px;
+}
+
+nav#sidebar a:hover {
+  transform: scale(1.5);
+  text-shadow: 0 0 30px pink;
+}
+
+nav#sidebar a.active {
+  border-color: purple; /* 紫色边框 */
+  transform: scale(1.4);
+  text-shadow: 0 0 20px purple;
+}
+
+.sparkle {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle 2s infinite ease-in-out;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* Responsive container */
+.content {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 1100px;
+  color: white;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: yellow;
+}
+
+p {
+  font-size: 1.rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  color: purple;
+  font-weight: bold;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  margin-top: 2rem;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-description {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 32px 0;
+}
+
+.gallery img {
+  width: 100%;
+  display: block;
+}
+
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 1rem;
+    margin-left: 2.8rem;
+  }
+}
+
+#sidebar .lang-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#sidebar .lang-btn img {
+  display: block;
+}
+
+/* 初始隐藏 sidebar，避免加载时文字闪烁 */
+#sidebar {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+/* 初始化完成后显示 sidebar */
+body.sidebar-ready #sidebar {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+  nav#sidebar {
+    width: 14vw;            /* 稍微变宽一点，避免文字换行 */
+    padding-top: 1rem;      /* 顶部留白减少 */
+  }
+
+  nav#sidebar a {
+    margin: 0.4rem 0;       /* ✅ 减小间距 */
+    font-size: 0.6rem;      /* ✅ 字体稍小 */
+    padding: 0.2rem 0.2rem; /* ✅ 内间距缩小 */
+  }
+
+  .content {
+    margin-left: 3rem;      /* 保证正文不被侧边栏挡住 */
+    padding: 0.8rem;
+  }
+}
+
