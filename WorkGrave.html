@@ -136,7 +136,8 @@
     .rain-sound-btn {
       position: absolute;
       left: 50%;
-      bottom: -68px;
+      top: -52px;
+      bottom: auto;
       transform: translateX(-50%);
       padding: 9px 14px 10px;
       border: 1px solid rgba(255,255,255,0.30);
@@ -313,7 +314,8 @@
       }
 
       .rain-sound-btn {
-        bottom: -54px;
+        top: -46px;
+        bottom: auto;
         font-size: 14px;
         padding: 8px 13px 9px;
         background: rgba(0,0,0,0.72);
@@ -706,6 +708,15 @@
 
       .rain-recording-collage {
         gap: 2.5rem !important;
+      }
+    }
+
+
+    /* button position only: keep the rain button above the moving screen */
+    @media screen and (max-width: 430px) {
+      .rain-sound-btn {
+        top: -42px;
+        bottom: auto;
       }
     }
 
