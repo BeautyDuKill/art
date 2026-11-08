@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title 
+    data-zh="变形记 - Haoliday"
+    data-en="Metamorphosis - Haoliday">
+    Metamorphosis - Haoliday
+  </title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .installation-view {
+      margin: 2rem 0;
+    }
+
+    .installation-view img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .video-container {
+      margin-top: 3rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      display: block;
+    }
+
+    .work-info {
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+
+    /* Reusable Project Info block for commissioned projects */
+    .project-info {
+      margin: 2.2rem 0 2.5rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid rgba(255, 255, 0, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 0, 0.55);
+    }
+
+    .project-info-heading {
+      margin: 0 0 1.1rem;
+      color: yellow;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+    }
+
+    .project-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem 1.5rem;
+    }
+
+    .project-info-item {
+      min-width: 0;
+    }
+
+    .project-info-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #a000a0;
+      font-size: 0.7rem;
+      line-height: 1.35;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+    }
+
+    .project-info-value {
+      display: block;
+      color: yellow;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    @media screen and (max-width: 768px) {
+      .project-info {
+        margin: 1.5rem 0 2rem;
+        padding: 1rem 0;
+      }
+
+      .project-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.8rem;
+      }
+
+      .project-info-heading {
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .project-info-label {
+        font-size: 0.64rem;
+      }
+
+      .project-info-value {
+        font-size: 0.78rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+
+    <!-- 标题 -->
+    <h1 
+      data-zh="变形记"
+      data-en="Metamorphosis">
+      Metamorphosis
+    </h1>
+
+    <!-- 1. 装置现场 -->
+    <div class="installation-view">
+      <img 
+        src="images/metamorphosis_installation.png" 
+        alt="Metamorphosis Installation View">
+    </div>
+
+    <!-- 2. Project Info: reusable metadata module for commissioned works -->
+    <section class="project-info" aria-labelledby="project-info-heading">
+      <h2 class="project-info-heading" id="project-info-heading"
+          data-zh="项目资料"
+          data-en="PROJECT INFO">PROJECT INFO</h2>
+
+      <div class="project-info-grid">
+        <div class="project-info-item">
+          <span class="project-info-label"
+                data-zh="委托方"
+                data-en="CLIENT">CLIENT</span>
+          <span class="project-info-value"
+                data-zh="中国美术学院"
+                data-en="China Academy of Art">China Academy of Art</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label"
+                data-zh="作品类型"
+                data-en="FORMAT">FORMAT</span>
+          <span class="project-info-value"
+                data-zh="四通道影像装置"
+                data-en="Four-channel video installation">Four-channel video installation</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label"
+                data-zh="显示媒介"
+                data-en="DISPLAY">DISPLAY</span>
+          <span class="project-info-value"
+                data-zh="72m × 8m × 8m LED 立方体环形四屏"
+                data-en="72m × 8m × 8m four-sided LED cube">72m × 8m × 8m four-sided LED cube</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label"
+                data-zh="影像时长"
+                data-en="DURATION">DURATION</span>
+          <span class="project-info-value">4'18"</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label"
+                data-zh="年份"
+                data-en="YEAR">YEAR</span>
+          <span class="project-info-value">2025</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label"
+                data-zh="职责"
+                data-en="ROLE">ROLE</span>
+          <span class="project-info-value"
+                data-zh="联合导演 / 主制作"
+                data-en="Co-Director / Lead Production">Co-Director / Lead Production</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label"
+                data-zh="工具"
+                data-en="TOOLS">TOOLS</span>
+          <span class="project-info-value">Unreal Engine / Stable Diffusion / Blender / StyleGAN / Adobe Premiere</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 作品介绍 -->
+    <p class="work-info"
+       data-zh="
+《变形记》是一件四通道影像装置，受委托作为中国美术学院2025毕业季开幕影像演出。
+
+作品以当代皮影戏的形式展开，由五个章节组成：
+《影子的影子》《地球上最伟大的表演》《云图》《对抗生成》与《后台》。
+
+作品结合 Unreal Engine、Stable Diffusion 与 StyleGAN，围绕幻觉、进化、瞬时性与算法重组四个维度展开对“变形”的想象。
+
+变化被视为宇宙演化的常态，而变形则是系统重新组织自身的过程。
+
+在地质时间与瞬时突变、幻象与具身经验之间，观众被置入一个持续生成的动态场域之中。
+"
+       data-en="
+Metamorphosis is a four-channel video installation commissioned as the opening moving image performance for the 2025 China Academy of Art Graduation Exhibition.
+
+The work unfolds as a contemporary shadow play structured in five acts:
+“Shadow within Shadow,” “The Greatest Show on Earth,” “Cloud Atlas,” “Adversarial Generation,” and “Backstage.”
+
+Integrating Unreal Engine, Stable Diffusion, and StyleGAN, the work explores transformation across four dimensions: hallucination, evolution, instantaneity, and algorithmic recomposition.
+
+Change is understood as the normal state of cosmic evolution, while transformation becomes the reconfiguration of systems.
+
+Between geological time and instantaneous mutation, between illusion and embodiment, the installation situates viewers within a dynamic field of becoming.
+">
+    </p>
+
+    <!-- 4. Stills -->
+    <div class="gallery">
+
+      <img src="images/metamorphosis1.png" alt="Metamorphosis still 1">
+      <img src="images/metamorphosis2.png" alt="Metamorphosis still 2">
+      <img src="images/metamorphosis3.png" alt="Metamorphosis still 3">
+      <img src="images/metamorphosis4.png" alt="Metamorphosis still 4">
+      <img src="images/metamorphosis5.png" alt="Metamorphosis still 5">
+      <img src="images/metamorphosis6.png" alt="Metamorphosis still 6">
+
+    </div>
+
+    <!-- 5. Video -->
+    <div class="video-container">
+
+      <iframe
+        src="https://www.youtube.com/embed/PgdywZcOHAU?si=NR2eaDMZWXP0WuOI"
+        title="Metamorphosis"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+  </main>
+
+  <script src="common.js"></script>
+
+</body>
+</html>

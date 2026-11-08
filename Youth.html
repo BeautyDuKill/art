@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="青春绽放 - Haoliday" data-en="Blossom of Youth - Haoliday">青春绽放 - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .project-info { margin: 2.2rem 0 2.5rem; padding: 1.2rem 0; border-top: 1px solid rgba(255,255,0,.55); border-bottom: 1px solid rgba(255,255,0,.55); }
+    .project-info-heading { margin: 0 0 1.1rem; color: yellow; font-size: .9rem; line-height: 1.3; letter-spacing: .12em; font-weight: bold; }
+    .project-info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1.2rem 1.5rem; }
+    .project-info-item { min-width: 0; }
+    .project-info-label { display: block; margin-bottom: .35rem; color: #a000a0; font-size: .7rem; line-height: 1.35; font-weight: bold; letter-spacing: .06em; }
+    .project-info-value { display: block; color: yellow; font-size: .88rem; line-height: 1.5; font-weight: bold; overflow-wrap: anywhere; }
+    @media screen and (max-width:768px) {
+      .project-info { margin: 1.5rem 0 2rem; padding: 1rem 0; }
+      .project-info-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem .8rem; }
+      .project-info-heading { font-size: .82rem; margin-bottom: .9rem; }
+      .project-info-label { font-size: .64rem; }
+      .project-info-value { font-size: .78rem; }
+    }
+
+    .youth-stills {
+      margin: 2.5rem 0;
+    }
+    .youth-stills-heading {
+      margin: 0 0 1.2rem;
+      color: yellow;
+      font-size: .9rem;
+      line-height: 1.3;
+      letter-spacing: .12em;
+      font-weight: bold;
+    }
+    .youth-stills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .youth-stills-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    @media screen and (max-width: 768px) {
+      .youth-stills { margin: 2rem 0; }
+      .youth-stills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: .65rem;
+      }
+      .youth-stills-heading {
+        font-size: .82rem;
+        margin-bottom: .9rem;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+    <h1 data-zh="青春绽放" data-en="Blossom of Youth">青春绽放</h1>
+
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/fV10TtrcO3o?si=L1q-O-AQWGnfh6J6" allowfullscreen></iframe>
+    </div>
+
+    <section class="project-info" aria-labelledby="project-info-heading">
+      <h2 class="project-info-heading" id="project-info-heading"
+          data-zh="项目资料 / PROJECT INFO" data-en="PROJECT INFO">PROJECT INFO</h2>
+      <div class="project-info-grid">
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="委托方 / CLIENT" data-en="CLIENT">CLIENT</span>
+          <span class="project-info-value" data-zh="2023成都大运会" data-en="Chengdu FISU World University Games Summer">Chengdu FISU World University Games Summer</span>
+        </div>
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="作品类型 / FORMAT" data-en="FORMAT">FORMAT</span>
+          <span class="project-info-value" data-zh="AIGC 单屏影像" data-en="AIGC Single-channel Video">AIGC Single-channel Video</span>
+        </div>
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="影像时长 / DURATION" data-en="DURATION">DURATION</span>
+          <span class="project-info-value">2'36"</span>
+        </div>
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="年份 / YEAR" data-en="YEAR">YEAR</span>
+          <span class="project-info-value">2023</span>
+        </div>
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="职责 / ROLE" data-en="ROLE">ROLE</span>
+          <span class="project-info-value" data-zh="AIGC 动画制作 / 三维动画制作" data-en="AIGC Animation / 3D Animation">AIGC Animation / 3D Animation</span>
+        </div>
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="工具 / TOOLS" data-en="TOOLS">TOOLS</span>
+          <span class="project-info-value">Stable Diffusion / Blender / After Effects</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="work-info"
+       data-zh="《青春绽放》是一部为2023成都大运会委任制作的 AIGC 单屏影像。影片以“青年”、“运动”与“文明”为主题，展开一场关于体育与文明的奥德赛。
+
+作品以体育竞技的完整进程作为叙事结构，通过“就位”、“蓄势”、“启程”、“冲刺”与“造极”五个阶段，构建出一条从积蓄力量到最终绽放的运动轨迹。这一过程既是运动员协作奋进的人生旅程，也映射出生生不息的宇宙演化。
+
+影片将竞技运动中的力量、速度与突破转化为视觉叙事，在不断加速的节奏中，依次展开关于“行健”、“青年”、“运动”、“文明”与“绽放”的想象，最终将个体的竞技精神延伸为对青年生命力与人类文明的礼赞。"
+       data-en="Blossom of Youth is an AIGC single-channel video commissioned for the Chengdu 2023 FISU World University Games. Centered on youth, sports, and civilization, the film unfolds as an odyssey of sport and human achievement.
+
+The narrative follows the progression of an athletic competition through five stages: “Ready,” “Building Momentum,” “Setting Off,” “Sprint,” and “Peak.” This trajectory—from gathering strength to reaching a moment of emergence—reflects both a journey of collective endeavor and the continuous evolution of the cosmos.
+
+Translating the force, speed, and breakthrough of athletic performance into visual storytelling, the film accelerates toward its climax, unfolding ideas of vitality, youth, movement, civilization, and blossoming. The spirit of individual competition ultimately expands into a celebration of youth and human civilization.">
+      作品简介
+    </p>
+
+    <section class="youth-stills" aria-labelledby="youth-stills-heading">
+      <h2 class="youth-stills-heading" id="youth-stills-heading"
+          data-zh="作品静帧 / STILLS" data-en="STILLS">STILLS</h2>
+      <div class="youth-stills-grid">
+        <img src="images/commissions/1youth.png" alt="Blossom of Youth — still 1" loading="lazy" />
+        <img src="images/commissions/2youth.png" alt="Blossom of Youth — still 2" loading="lazy" />
+        <img src="images/commissions/3youth.png" alt="Blossom of Youth — still 3" loading="lazy" />
+        <img src="images/commissions/4youth.png" alt="Blossom of Youth — still 4" loading="lazy" />
+        <img src="images/commissions/5youth.png" alt="Blossom of Youth — still 5" loading="lazy" />
+        <img src="images/commissions/6youth.png" alt="Blossom of Youth — still 6" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+</body>
+</html>

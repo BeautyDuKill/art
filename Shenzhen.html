@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="深圳:世界工厂 - Haoliday" data-en="Shenzhen:World Factory - Haoliday">Shenzhen Animation - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .project-info {
+      margin: 2.2rem 0 2.5rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid rgba(255, 255, 0, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 0, 0.55);
+    }
+
+    .project-info-heading,
+    .shenzhen-stills-heading {
+      margin: 0 0 1.1rem;
+      color: yellow;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+    }
+
+    .project-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem 1.5rem;
+    }
+
+    .project-info-item { min-width: 0; }
+
+    .project-info-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #a000a0;
+      font-size: 0.7rem;
+      line-height: 1.35;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+    }
+
+    .project-info-value {
+      display: block;
+      color: yellow;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .shenzhen-description {
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+
+    .shenzhen-stills {
+      margin: 2.5rem 0;
+    }
+
+    .shenzhen-stills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .shenzhen-stills-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: auto;
+      padding: 0;
+      margin: 2rem 0 3rem;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-note {
+      margin-top: -1.25rem;
+      margin-bottom: 2rem;
+      color: #a000a0;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 768px) {
+      .project-info {
+        margin: 1.5rem 0 2rem;
+        padding: 1rem 0;
+      }
+
+      .project-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.8rem;
+      }
+
+      .project-info-heading,
+      .shenzhen-stills-heading {
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .project-info-label { font-size: 0.64rem; }
+      .project-info-value { font-size: 0.78rem; }
+
+      .shenzhen-stills { margin: 2rem 0; }
+      .shenzhen-stills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.65rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+    <h1 data-zh="深圳：世界工厂" data-en="Shenzhen:World Factory">Shenzhen Animation</h1>
+
+    <section class="project-info" aria-labelledby="project-info-heading">
+      <h2 class="project-info-heading" id="project-info-heading"
+          data-zh="项目资料 / PROJECT INFO" data-en="PROJECT INFO">PROJECT INFO</h2>
+
+      <div class="project-info-grid">
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="委托方 / CLIENT" data-en="CLIENT">CLIENT</span>
+          <span class="project-info-value"
+                data-zh="中国美术学院 网络社会研究所"
+                data-en="Institute of Network Society, China Academy of Art">Institute for Network Society, China Academy of Art</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="作品类型 / FORMAT" data-en="FORMAT">FORMAT</span>
+          <span class="project-info-value"
+                data-zh="三维动画 / 纪录片片段"
+                data-en="3D Animation / Documentary Sequence">3D Animation / Documentary Sequence</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="片段时长 / DURATION" data-en="DURATION">DURATION</span>
+          <span class="project-info-value">1'55"</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="年份 / YEAR" data-en="YEAR">YEAR</span>
+          <span class="project-info-value">2024</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="职责 / ROLE" data-en="ROLE">ROLE</span>
+          <span class="project-info-value"
+                data-zh="三维动画制作"
+                data-en="3D Animation">3D Animation</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="工具 / TOOLS" data-en="TOOLS">TOOLS</span>
+          <span class="project-info-value">Cinema 4D / Blender</span>
+        </div>
+
+    </section>
+
+    <p class="shenzhen-description"
+       data-zh="受中国美术学院网络社会研究所委托，为纪录片《深圳 / 世界工厂：一座创新现实主义之城》制作的一段三维动画。作品以森林作为隐喻，通过自然生态中的生长、连接与演化关系，具象呈现深圳的发展模式。"
+       data-en="A 3D animated sequence commissioned by the Institute of Network Society at China Academy of Art for the documentary Shenzhen / World Factory: A City of Innovative Realism. Using the forest as a metaphor, the animation visualizes Shenzhen's model of development through the relationships of growth, connection, and evolution within an ecological system.">
+      受中国美术学院网络与社会研究所委托，为纪录片《深圳 / 世界工厂：一座创新现实主义之城》制作的一段三维动画。作品以森林作为隐喻，通过自然生态中的生长、连接与演化关系，具象呈现深圳的发展模式。
+    </p>
+
+    <section class="shenzhen-stills" aria-labelledby="shenzhen-stills-heading">
+      <h2 class="shenzhen-stills-heading" id="shenzhen-stills-heading"
+          data-zh="序列帧 / STILLS" data-en="STILLS">STILLS</h2>
+      <div class="shenzhen-stills-grid">
+        <img src="images/commissions/1shenzhen.png" alt="Shenzhen Animation still 1" loading="lazy" />
+        <img src="images/commissions/2shenzhen.png" alt="Shenzhen Animation still 2" loading="lazy" />
+        <img src="images/commissions/3shenzhen.png" alt="Shenzhen Animation still 3" loading="lazy" />
+        <img src="images/commissions/4shenzhen.png" alt="Shenzhen Animation still 4" loading="lazy" />
+        <img src="images/commissions/5shenzhen.png" alt="Shenzhen Animation still 5" loading="lazy" />
+        <img src="images/commissions/6shenzhen.png" alt="Shenzhen Animation still 6" loading="lazy" />
+      </div>
+    </section>
+
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/tK_15M9-DIg?start=233&end=348"
+        title="Shenzhen / World Factory — 3D Animation Sequence"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <p class="video-note"
+       data-zh="纪录片原片 03:53–05:48"
+       data-en="Excerpt from 03:53 to 05:48 of the documentary.">
+      纪录片原片 03:53–05:48
+    </p>
+  </main>
+
+  <script src="common.js"></script>
+</body>
+</html>

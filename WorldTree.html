@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="世界树 - Haoliday" data-en="World Tree - Haoliday">World Tree - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .project-info {
+      margin: 2.2rem 0 2.5rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid rgba(255, 255, 0, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 0, 0.55);
+    }
+
+    .project-info-heading,
+    .worldtree-stills-heading {
+      margin: 0 0 1.1rem;
+      color: yellow;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+    }
+
+    .project-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem 1.5rem;
+    }
+
+    .project-info-item { min-width: 0; }
+
+    .project-info-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #a000a0;
+      font-size: 0.7rem;
+      line-height: 1.35;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+    }
+
+    .project-info-value {
+      display: block;
+      color: yellow;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .worldtree-description {
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+
+
+    .worldtree-video {
+      margin: 2.5rem 0;
+    }
+
+    .worldtree-video-player {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      background: #000;
+      object-fit: contain;
+    }
+
+    .worldtree-stills {
+      margin: 2.5rem 0;
+    }
+
+    .worldtree-stills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .worldtree-stills-grid img {
+        display: block;
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      .project-info {
+        margin: 1.5rem 0 2rem;
+        padding: 1rem 0;
+      }
+
+      .project-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.8rem;
+      }
+
+      .project-info-heading,
+      .worldtree-stills-heading {
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .project-info-label { font-size: 0.64rem; }
+      .project-info-value { font-size: 0.78rem; }
+
+      .worldtree-stills {
+          margin: 2rem 0;
+      }
+
+      .worldtree-stills-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+      }
+
+      .worldtree-stills-grid img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+    <h1 data-zh="世界树" data-en="World Tree">World Tree</h1>
+
+    <section class="project-info" aria-labelledby="project-info-heading">
+      <h2 class="project-info-heading" id="project-info-heading"
+          data-zh="项目资料 / PROJECT INFO" data-en="PROJECT INFO">PROJECT INFO</h2>
+
+      <div class="project-info-grid">
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="委托方 / CLIENT" data-en="CLIENT">CLIENT</span>
+          <span class="project-info-value"
+                data-zh="中国美术学院"
+                data-en="China Academy of Art">China Academy of Art</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="作品类型 / FORMAT" data-en="FORMAT">FORMAT</span>
+          <span class="project-info-value"
+                data-zh="主视觉动画"
+                data-en="Key Visual Animation">AIGC Animation</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="年份 / YEAR" data-en="YEAR">YEAR</span>
+          <span class="project-info-value">2024</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="职责 / ROLE" data-en="ROLE">ROLE</span>
+          <span class="project-info-value"
+                data-zh="AIGC 动画制作"
+                data-en="AIGC Animation Production">AIGC Animation Production</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="工具 / TOOLS" data-en="TOOLS">TOOLS</span>
+          <span class="project-info-value">Cinema 4D / Stable Diffusion</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="项目 / PROJECT" data-en="PROJECT">PROJECT</span>
+          <span class="project-info-value"
+                data-zh="2024 中国美术学院毕业季主视觉"
+                data-en="2024 China Academy of Art Graduation Season Key Visual">2024 China Academy of Art Graduation Season Key Visual</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="worldtree-description"
+       data-zh="《世界树》是中国美术学院2024年毕业季主视觉项目。我负责其中开头部分的 AIGC 动画制作，使用 Stable Diffusion 与 Cinema 4D，将项目的视觉概念转化为动态影像。"
+       data-en="World Tree is the key visual project for the 2024 Graduation Season of the China Academy of Art. I was responsible for the AIGC animation in the opening section, using Stable Diffusion and Cinema 4D to translate the project's visual concept into moving images.">
+      《世界树》是中国美术学院2024年毕业季主视觉项目。我负责其中的 AIGC 动画制作，使用 Cinema 4D 与 Stable Diffusion，将项目的视觉概念转化为动态影像。
+    </p>
+
+    <section class="worldtree-video" aria-labelledby="worldtree-video-heading">
+      <h2 class="worldtree-stills-heading" id="worldtree-video-heading"
+          data-zh="作品影像 / VIDEO" data-en="VIDEO">VIDEO</h2>
+      <video class="worldtree-video-player" controls playsinline preload="metadata">
+        <source src="images/commissions/worldTree.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section class="worldtree-stills" aria-labelledby="worldtree-stills-heading">
+      <h2 class="worldtree-stills-heading" id="worldtree-stills-heading"
+          data-zh="现场呈现 / INSTALLATION" data-en="INSTALLATION">INSTALLATION</h2>
+      <div class="worldtree-stills-grid">
+        <img src="images/commissions/worldTree1.png" alt="World Tree — installation view 1" loading="lazy" />
+        <img src="images/commissions/worldTree2.png" alt="World Tree — installation view 2" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+</body>
+</html>

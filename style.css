@@ -2,57 +2,58 @@ body {
   margin: 0;
   background: black;
   color: white;
-  font-family: 'Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-y: auto;
 }
 
 :lang(zh) {
-  font-family: 'PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
-
-
-
 
 nav#sidebar {
   z-index: 10;
   position: fixed;
   left: 0;
   top: 0;
-  width: 10vw;
+  width: 10rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 2rem;
+  padding: 0.7rem 0.45rem 0.45rem;
   background: transparent;
-  margin-left: 0.7rem;
-
+  margin-left: 0.45rem;
+  overflow: visible;
 }
 
 nav#sidebar a {
-  margin: 1rem 0;
+  margin: 0.34rem 0;
   color: yellow;
   text-decoration: none;
   font-weight: bold;
-  font-size: 0.7rem;
-  padding: 0.3rem 0.3rem;
+  font-size: 0.66rem;
+  line-height: 1.15;
+  padding: 0.16rem 0.22rem;
+  text-align: center;
   transition: transform 0.3s, text-shadow 0.3s, border 0.3s;
   text-shadow: 1px 1px 0 black, -1px 1px 0 black, 1px -1px 0 black, -1px -1px 0 black;
-  border: 2px solid transparent; /* 初始无边框 */
+  border: 2px solid transparent;
   border-radius: 8px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 nav#sidebar a:hover {
-  transform: scale(1.5);
-  text-shadow: 0 0 30px pink;
+  transform: scale(1.12);
+  text-shadow: 0 0 18px pink;
 }
 
 nav#sidebar a.active {
-  border-color: purple; /* 紫色边框 */
-  transform: scale(1.4);
-  text-shadow: 0 0 20px purple;
+  border-color: purple;
+  transform: scale(1.08);
+  text-shadow: 0 0 16px purple;
 }
 
 .sparkle {
@@ -87,7 +88,7 @@ h1 {
 }
 
 p {
-  font-size: 1.rem;
+  font-size: 1rem;
   line-height: 1.6;
   margin-top: 1rem;
   color: purple;
@@ -129,14 +130,6 @@ p {
   display: block;
 }
 
-
-@media screen and (max-width: 768px) {
-  .content {
-    padding: 1rem;
-    margin-left: 2.8rem;
-  }
-}
-
 #sidebar .lang-btn {
   background: transparent;
   border: none;
@@ -161,124 +154,313 @@ body.sidebar-ready #sidebar {
   pointer-events: auto;
 }
 
+/* ===== Sidebar refinement ===== */
 
-@media screen and (max-width: 768px) {
+nav#sidebar .sidebar-home {
+  display: block;
+  margin: 0 0 0.2rem;
+  padding: 0;
+}
+
+nav#sidebar .sidebar-home img {
+  width: 5rem !important;
+  height: 5rem !important;
+  object-fit: contain;
+}
+
+nav#sidebar .sidebar-scroll-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 0 1 auto;
+  min-height: 0;
+}
+
+nav#sidebar .sidebar-section-title {
+  color: purple;
+  font-size: 0.86rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  margin: 0.36rem 0 0.12rem;
+  padding: 0.1rem 0.2rem;
+  width: 100%;
+}
+
+nav#sidebar .sidebar-language-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.28rem;
+  padding: 0.3rem 0 0.1rem;
+  flex: 0 0 auto;
+}
+
+nav#sidebar .sidebar-language-footer .lang-btn {
+  display: block;
+}
+
+nav#sidebar .sidebar-language-footer img {
+  width: 4.2rem;
+  height: auto;
+}
+
+.sidebar-menu-toggle {
+  display: none;
+}
+
+/* tablet / narrow desktop */
+@media screen and (max-width: 1100px) and (min-width: 769px) {
   nav#sidebar {
-    width: 14vw;            /* 稍微变宽一点，避免文字换行 */
-    padding-top: 1rem;      /* 顶部留白减少 */
+    width: 9rem;
+    margin-left: 0.2rem;
+    padding: 0.45rem 0.3rem 0.28rem;
+  }
+
+  nav#sidebar .sidebar-home img {
+    width: 4.2rem !important;
+    height: 4.2rem !important;
   }
 
   nav#sidebar a {
-    margin: 0.4rem 0;       /* ✅ 减小间距 */
-    font-size: 0.6rem;      /* ✅ 字体稍小 */
-    padding: 0.2rem 0.2rem; /* ✅ 内间距缩小 */
+    margin: 0.2rem 0;
+    padding: 0.1rem 0.16rem;
+    font-size: clamp(0.54rem, 0.72vw, 0.62rem);
+    line-height: 1.1;
+  }
+
+  nav#sidebar a:hover,
+  nav#sidebar a.active {
+    transform: scale(1.05);
+  }
+
+  nav#sidebar .sidebar-section-title {
+    font-size: 0.76rem;
+    margin: 0.24rem 0 0.08rem;
+  }
+
+  nav#sidebar .sidebar-language-footer {
+    margin-top: 0.18rem;
+    padding-top: 0.18rem;
+  }
+
+  nav#sidebar .sidebar-language-footer img {
+    width: 3.7rem;
   }
 
   .content {
-    margin-left: 3rem;      /* 保证正文不被侧边栏挡住 */
-    padding: 0.8rem;
-  }
-}
-
-
-/* =========================================================
-   Global sidebar no-overlap fix
-   - Keeps sidebar transparent
-   - Prevents links/images from spilling over content on smaller screens
-   - Gives all normal .content pages enough left margin
-   ========================================================= */
-
-/* tablet / narrow desktop */
-@media screen and (max-width: 1100px) {
-  .content {
-    margin-left: 8rem;
+    margin-left: 9.6rem;
     margin-right: 1rem;
-    max-width: calc(100vw - 9rem);
+    max-width: calc(100vw - 10.9rem);
   }
 }
 
-/* phone */
-@media screen and (max-width: 768px) {
+/* short desktop heights */
+@media screen and (min-width: 769px) and (max-height: 760px) {
   nav#sidebar {
-    width: 6.9rem;
+    padding-top: 0.3rem;
+  }
+
+  nav#sidebar .sidebar-home img {
+    width: 3.7rem !important;
+    height: 3.7rem !important;
+  }
+
+  nav#sidebar a {
+    margin: 0.1rem 0;
+    padding-top: 0.06rem;
+    padding-bottom: 0.06rem;
+    font-size: 0.6rem;
+  }
+
+  nav#sidebar .sidebar-section-title {
+    margin-top: 0.16rem;
+    font-size: 0.74rem;
+  }
+
+  nav#sidebar .sidebar-language-footer {
+    margin-top: 0.1rem;
+    padding-top: 0.12rem;
+  }
+
+  nav#sidebar .sidebar-language-footer img {
+    width: 3.3rem;
+  }
+}
+
+/* mobile drawer */
+@media screen and (max-width: 768px) {
+  .sidebar-menu-toggle {
+    display: flex;
+    position: fixed;
+    z-index: 120;
+    top: 12px;
+    left: 12px;
+    width: 48px;
+    height: 44px;
+    padding: 6px 5px 4px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    color: yellow;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 0, 0.7);
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: left 0.25s ease, opacity 0.2s ease;
+  }
+
+  body.sidebar-ready .sidebar-menu-toggle {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .sidebar-menu-toggle span {
+    display: block;
+    width: 19px;
+    height: 1px;
+    background: yellow;
+  }
+
+  .sidebar-menu-toggle small {
+    color: yellow;
+    font: 8px/1 "Courier New", monospace;
+    letter-spacing: 0.08em;
+  }
+
+  nav#sidebar {
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    width: min(68vw, 255px);
+    min-width: 190px;
+    height: 100vh;
+    height: 100dvh;
     margin-left: 0;
-    padding-top: 0.8rem;
+    padding: 0.6rem 0.55rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.97) !important;
+    border-right: 1px solid rgba(128, 0, 128, 0.75);
+    box-shadow: 8px 0 22px rgba(0, 0, 0, 0.28);
+    transform: translateX(-105%);
+    transition: transform 0.26s ease, opacity 0.25s ease;
+    pointer-events: none;
+  }
+
+  body.sidebar-ready nav#sidebar {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+    transform: translateX(-105%);
+  }
+
+  body.sidebar-open nav#sidebar {
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  nav#sidebar .sidebar-scroll-content {
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
     overflow-x: hidden;
-    align-items: center;
-    background: transparent;
+    width: 100%;
+    padding: 0 0.08rem 0.45rem;
+    scrollbar-width: thin;
+    scrollbar-color: purple transparent;
+  }
+
+  nav#sidebar .sidebar-home img {
+    width: 4.5rem !important;
+    height: 4.5rem !important;
   }
 
   nav#sidebar a {
     display: block;
-    width: 6.2rem;
-    max-width: 6.2rem;
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-break: normal;
+    width: 100%;
+    max-width: 100%;
+    margin: 0.16rem 0;
+    padding: 0.18rem 0.16rem;
+    font-size: 0.72rem;
+    line-height: 1.18;
     text-align: center;
-    line-height: 1.12;
-    font-size: 0.6rem;
-    margin: 0.42rem 0;
-    padding: 0.16rem 0.18rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+    transform: none;
   }
 
-  nav#sidebar a:hover {
-    transform: scale(1.08);
-  }
-
+  nav#sidebar a:hover,
   nav#sidebar a.active {
-    transform: scale(1.08);
+    transform: none;
   }
 
-  nav#sidebar a img {
-    max-width: 4.5rem !important;
-    max-height: 4.5rem !important;
-    width: auto !important;
-    height: auto !important;
+  nav#sidebar .sidebar-section-title {
+    font-size: 0.98rem;
+    margin: 0.42rem 0 0.16rem;
+    padding: 0.16rem 0.1rem;
   }
 
-  #sidebar .lang-btn img,
-  #lang-switch img {
-    width: 3.9rem !important;
-    height: auto !important;
+  nav#sidebar .sidebar-language-footer {
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
+      min-height: 75px;
+      margin-top: 0;
+      padding: 0.4rem 0 0.6rem;
+      background: #000 !important;
+      border-top: none;
   }
 
-  .content {
-    margin-left: 7.1rem;
-    margin-right: 0.8rem;
-    padding: 0.8rem;
-    max-width: calc(100vw - 7.9rem);
+  nav#sidebar .sidebar-language-footer img {
+    width: 5.5rem;
+    max-height: 3.8rem;
+    object-fit: contain;
   }
-}
 
-/* very narrow phone */
+  /* 菜单展开时隐藏 MENU 按钮 */
+  body.sidebar-open .sidebar-menu-toggle {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+  }
+
+
 @media screen and (max-width: 430px) {
   nav#sidebar {
-    width: 6.3rem;
+    width: min(72vw, 245px);
+    min-width: 180px;
   }
 
   nav#sidebar a {
-    width: 5.75rem;
-    max-width: 5.75rem;
-    font-size: 0.56rem;
-    margin: 0.36rem 0;
+    font-size: 0.68rem;
+    margin: 0.14rem 0;
   }
 
-  nav#sidebar a img {
-    max-width: 4.05rem !important;
-    max-height: 4.05rem !important;
+  nav#sidebar .sidebar-home img {
+    width: 4.2rem !important;
+    height: 4.2rem !important;
   }
 
-  #sidebar .lang-btn img,
-  #lang-switch img {
-    width: 3.55rem !important;
+  nav#sidebar .sidebar-section-title {
+    font-size: 0.92rem;
   }
 
-  .content {
-    margin-left: 6.45rem;
-    margin-right: 0.55rem;
-    max-width: calc(100vw - 7rem);
+
+
+@media (prefers-reduced-motion: reduce) {
+  nav#sidebar,
+  .sidebar-menu-toggle {
+    transition: none !important;
   }
 }
-

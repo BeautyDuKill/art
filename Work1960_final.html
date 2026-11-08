@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="重返1960s - Haoliday" data-en="Back to the 1960s - Haoliday">重返1960s - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .project-info {
+      margin: 2.2rem 0 2.5rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid rgba(255, 255, 0, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 0, 0.55);
+    }
+
+    .project-info-heading {
+      margin: 0 0 1.1rem;
+      color: yellow;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+    }
+
+    .project-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem 1.5rem;
+    }
+
+    .project-info-item { min-width: 0; }
+
+    .project-info-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #a000a0;
+      font-size: 0.7rem;
+      line-height: 1.35;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+    }
+
+    .project-info-value {
+      display: block;
+      color: yellow;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .back1960-description {
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+
+    .back1960-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin: 2rem 0 3rem;
+    }
+
+    .back1960-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .project-info {
+        margin: 1.5rem 0 2rem;
+        padding: 1rem 0;
+      }
+
+      .project-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.8rem;
+      }
+
+      .project-info-heading {
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .project-info-label { font-size: 0.64rem; }
+      .project-info-value { font-size: 0.78rem; }
+    }
+
+    .back1960-stills {
+      margin: 2.5rem 0;
+    }
+
+    .back1960-stills-heading {
+      margin: 0 0 1.1rem;
+      color: yellow;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+    }
+
+    .back1960-stills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .back1960-stills-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @media screen and (max-width: 768px) {
+      .back1960-stills {
+        margin: 2rem 0;
+      }
+
+      .back1960-stills-heading {
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .back1960-stills-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+    <h1 data-zh="重返1960s" data-en="Back to the 1960s">重返1960s</h1>
+
+    <section class="project-info" aria-labelledby="project-info-heading">
+      <h2 class="project-info-heading" id="project-info-heading"
+          data-zh="项目资料 / PROJECT INFO" data-en="PROJECT INFO">PROJECT INFO</h2>
+
+      <div class="project-info-grid">
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="作品类型 / FORMAT" data-en="FORMAT">FORMAT</span>
+          <span class="project-info-value"
+                data-zh="片尾三维动画"
+                data-en="3D Animated End Sequence">3D Animated End Sequence</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="时长 / DURATION" data-en="DURATION">DURATION</span>
+          <span class="project-info-value">1'46"</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="年份 / YEAR" data-en="YEAR">YEAR</span>
+          <span class="project-info-value">2025</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="职责 / ROLE" data-en="ROLE">ROLE</span>
+          <span class="project-info-value"
+                data-zh="三维动画制作"
+                data-en="3D Animation Production">3D Animation Production</span>
+        </div>
+
+        <div class="project-info-item" style="grid-column: 1 / -1;">
+          <span class="project-info-label" data-zh="所属项目 / PROJECT" data-en="PROJECT">PROJECT</span>
+          <span class="project-info-value"
+                data-zh="《个人计算机与反文化》"
+                data-en="Personal Computers and Counterculture">Personal Computers and Counterculture</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="工具 / TOOLS" data-en="TOOLS">TOOLS</span>
+          <span class="project-info-value">Blender</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="back1960-description"
+       data-zh="《重返1960s》是为文化与技术三部曲第一部《个人计算机与反文化》制作的一段片尾三维动画。"
+       data-en="Back to the 1960s is a 3D animated end sequence created for Personal Computers and Counterculture, the first installment of the Culture and Technology trilogy.">
+      《重返1960s》是为文化与技术三部曲第一部《个人计算机与反文化》制作的一段片尾三维动画。
+    </p>
+
+    <div class="back1960-video">
+      <iframe
+        src="https://www.youtube.com/embed/obruH8GGz-M"
+        title="Back to the 1960s"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <section class="back1960-stills" aria-labelledby="back1960-stills-heading">
+      <h2 class="back1960-stills-heading" id="back1960-stills-heading"
+          data-zh="作品静帧 / STILLS" data-en="STILLS">STILLS</h2>
+      <div class="back1960-stills-grid">
+        <img src="images/commissions/palo1.png" alt="Back to the 1960s — still 1" loading="lazy" />
+        <img src="images/commissions/palo2.png" alt="Back to the 1960s — still 2" loading="lazy" />
+        <img src="images/commissions/palo3.png" alt="Back to the 1960s — still 3" loading="lazy" />
+        <img src="images/commissions/palo4.png" alt="Back to the 1960s — still 4" loading="lazy" />
+        <img src="images/commissions/palo5.png" alt="Back to the 1960s — still 5" loading="lazy" />
+        <img src="images/commissions/palo6.png" alt="Back to the 1960s — still 6" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+</body>
+</html>

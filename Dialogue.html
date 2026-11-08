@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-zh="隔空对话 - Haoliday" data-en="Dialogue Across Time - Haoliday">隔空对话 - Haoliday</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .project-info {
+      margin: 2.2rem 0 2.5rem;
+      padding: 1.2rem 0;
+      border-top: 1px solid rgba(255, 255, 0, 0.55);
+      border-bottom: 1px solid rgba(255, 255, 0, 0.55);
+    }
+
+    .project-info-heading,
+    .dialogue-stills-heading {
+      margin: 0 0 1.1rem;
+      color: yellow;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      letter-spacing: 0.12em;
+      font-weight: bold;
+    }
+
+    .project-info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem 1.5rem;
+    }
+
+    .project-info-item { min-width: 0; }
+
+    .project-info-label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #a000a0;
+      font-size: 0.7rem;
+      line-height: 1.35;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+    }
+
+    .project-info-value {
+      display: block;
+      color: yellow;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .dialogue-description {
+      margin-top: 2rem;
+      line-height: 1.8;
+    }
+
+    .dialogue-stills {
+      margin: 2.5rem 0;
+    }
+
+    .dialogue-stills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .dialogue-stills-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @media screen and (max-width: 768px) {
+      .project-info {
+        margin: 1.5rem 0 2rem;
+        padding: 1rem 0;
+      }
+
+      .project-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 0.8rem;
+      }
+
+      .project-info-heading,
+      .dialogue-stills-heading {
+        font-size: 0.82rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .project-info-label { font-size: 0.64rem; }
+      .project-info-value { font-size: 0.78rem; }
+
+      .dialogue-stills {
+        margin: 2rem 0;
+      }
+
+      .dialogue-stills-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="sidebar-placeholder"></div>
+
+  <main class="content">
+    <h1 data-zh="隔空对话" data-en="Dialogue Across Time">隔空对话</h1>
+
+    <section class="project-info" aria-labelledby="project-info-heading">
+      <h2 class="project-info-heading" id="project-info-heading"
+          data-zh="项目资料 / PROJECT INFO" data-en="PROJECT INFO">PROJECT INFO</h2>
+
+      <div class="project-info-grid">
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="委托方 / CLIENT" data-en="CLIENT">CLIENT</span>
+          <span class="project-info-value"
+                data-zh="天问：文明的互鉴"
+                data-en="Inter-World-View 2023">Inter-World-View 2023</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="作品类型 / FORMAT" data-en="FORMAT">FORMAT</span>
+          <span class="project-info-value"
+                data-zh="多媒体影像装置"
+                data-en="Multimedia Video Installation">Multimedia Video Installation</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="年份 / YEAR" data-en="YEAR">YEAR</span>
+          <span class="project-info-value">2023</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="职责 / ROLE" data-en="ROLE">ROLE</span>
+          <span class="project-info-value"
+                data-zh="AI 数字人影像制作"
+                data-en="AI Digital Human Video Production">AI Digital Human Video Production</span>
+        </div>
+
+        <div class="project-info-item">
+          <span class="project-info-label" data-zh="工具 / TOOLS" data-en="TOOLS">TOOLS</span>
+          <span class="project-info-value">Midjourney / tts-vue / HeyGen / D-ID </span>
+        </div>
+
+
+      </div>
+    </section>
+
+    <p class="dialogue-description"
+       data-zh="《隔空对话》是为展览“天问：文明的互鉴”委托制作的系列装置作品。我参与了其中的 AI 数字人影像制作，以 AIGC 技术将人类文明中的历史人物重新呈现于展览现场。"
+       data-en="Dialogue Across Time is a series of installation works commissioned for the exhibition Inter-World-View 2023. I contributed to the production of AI digital human videos, using AIGC technologies to bring historical figures from human civilization into the exhibition space.">
+      《隔空对话》是为展览“天问：文明的互鉴”委托制作的系列装置作品。我参与了其中的 AI 数字人影像制作，以 AIGC 技术将人类文明中的历史人物重新呈现于展览现场。
+    </p>
+
+    <section class="dialogue-stills" aria-labelledby="dialogue-stills-heading">
+      <h2 class="dialogue-stills-heading" id="dialogue-stills-heading"
+          data-zh="作品现场 / INSTALLATION" data-en="INSTALLATION">INSTALLATION</h2>
+      <div class="dialogue-stills-grid">
+        <img src="images/commissions/dialogue1.png" alt="Dialogue Across Time — image 1" loading="lazy" />
+        <img src="images/commissions/dialogue2.png" alt="Dialogue Across Time — image 2" loading="lazy" />
+        <img src="images/commissions/dialogue3.png" alt="Dialogue Across Time — image 3" loading="lazy" />
+        <img src="images/commissions/dialogue4.png" alt="Dialogue Across Time — image 4" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <script src="common.js"></script>
+</body>
+</html>
